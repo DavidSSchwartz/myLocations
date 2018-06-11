@@ -23,13 +23,18 @@ class Categories extends Component{
 						<div key={i}>
 							{cat}
 						</div>)}
-					<div>
-						{this.props.categoryValue}
-						</div>
 
 					<div>add category
 						<input type='text' value={this.props.categoryValue} onChange={(e)=>this.props.changeCategoryValue(e.target.value)}/>
 						
+					</div>
+					<div>remove category
+						<select name="categories" onChange={(e)=>this.props.removeCat(e.target.value)}>
+						    {this.props.currentCats.map((cat, i)=>
+								<option value ={cat} key={i} >
+									{cat}
+								</option>)}
+						  </select>
 					</div>
 			</div>
 		    	)

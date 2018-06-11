@@ -16,7 +16,8 @@ const history1 = createBrowserHistory();
 const defaultState={
 	CategoryValue: '',
 	LocationValue:'',
-	CurrentCats:[]
+	CurrentCats:[],
+	RemovedCat:''
 };
 
 

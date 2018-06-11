@@ -9,7 +9,8 @@ function mapStateToProps(state){
 	return{
 		categoryValue:state.CategoryValue,
 		locationValue:state.LocationValue,
-		currentCats:state.CurrentCats
+		currentCats:state.CurrentCats,
+		removedCat:state.RemovedCat
 	
 
 	}

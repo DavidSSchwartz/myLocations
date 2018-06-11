@@ -22,3 +22,15 @@ export const CurrentCats =(state='', action)=>{
 	}
 	return state
 }
+export const RemovedCat =(state='', action)=>{
+
+	switch(action.type){
+		case 'REMOVE_CAT':
+
+			return action.category
+
+		default:
+			return state;
+	}
+	return state
+}

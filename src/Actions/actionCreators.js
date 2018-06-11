@@ -16,3 +16,9 @@ export const saveCats=(categories)=>{
 		categories
 	}
 }
+export const removeCat=(category)=>{
+	return{
+		type:'REMOVE_CAT',
+		category
+	}
+}
