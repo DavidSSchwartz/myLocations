@@ -12,7 +12,10 @@ export class Main extends Component{
 		
 	}
 	componentDidMount(){
-		
+		//localStorage.pushArrayItem("Location1","Petach Tikva")
+//localStorage.pushArrayItem("Location1","23 Charlop St")
+
+document.getElementById('result').innerHTML= sessionStorage.getItem("Location1")
 	
 		//pull in categories and locations from '/data' folder
 	}
@@ -26,7 +29,7 @@ export class Main extends Component{
  				</header>
 				<content>
 					<MainContent>
-				
+				<div id='result'></div>
 						<Route path="/Categories" render={()=><Categories />} />
 						<Route path="/Locations" render={()=><Locations />} />
 					</MainContent>
