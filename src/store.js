@@ -14,8 +14,9 @@ const history1 = createBrowserHistory();
 
 //create an object for the default data
 const defaultState={
-	Categories:[],
-	Category:''
+	CategoryValue: '',
+	LocationValue:'',
+	CurrentCats:[]
 };
 
 

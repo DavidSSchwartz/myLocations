@@ -1,13 +1,16 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actionCreators from '../Actions/actionCreators';
-import Main from './main';
+import {Main} from './main';
 import {withRouter} from 'react-router';
 
 function mapStateToProps(state){
 
 	return{
-		
+		categoryValue:state.CategoryValue,
+		locationValue:state.LocationValue,
+		currentCats:state.CurrentCats
+	
 
 	}
 }

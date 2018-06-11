@@ -9,7 +9,7 @@ localStorage.setItem("category6", "Industrial")
 
 
 
-		export const result=(
+		export const cats=(
 		
 			[
 			localStorage.getItem("category1"),

@@ -24,14 +24,14 @@ document.getElementById('result').innerHTML= sessionStorage.getItem("Location1")
 		return(
 			<div>
 				<header>
-					<Route path='/' render={()=><Header />} />
+					<Route path='/' render={()=><Header {...this.props}/>} />
 					<div id="result"></div>
  				</header>
 				<content>
 					<MainContent>
 				<div id='result'></div>
-						<Route path="/Categories" render={()=><Categories />} />
-						<Route path="/Locations" render={()=><Locations />} />
+						<Route path="/Categories" render={()=><Categories {...this.props}/>} />
+						<Route path="/Locations" render={()=><Locations {...this.props}/>} />
 					</MainContent>
 				</content>
 				<footer>
