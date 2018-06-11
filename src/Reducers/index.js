@@ -3,7 +3,10 @@ import { routerReducer } from 'react-router-redux';
 import {
 	CategoryValue,
 	CurrentCats,
-	RemovedCat
+	RemovedCat,
+	EditCatValue,
+	EditCat,
+	NewEditValue
 } from './category';
 import {
 	LocationValue
@@ -14,6 +17,9 @@ export const rootReducer = combineReducers({
 	CategoryValue,
 	CurrentCats,
 	RemovedCat,
+	EditCatValue,
+	EditCat,
+	NewEditValue,
 	LocationValue,
 	routing: routerReducer
 });

@@ -34,3 +34,41 @@ export const RemovedCat =(state='', action)=>{
 	}
 	return state
 }
+
+export const EditCatValue =(state='', action)=>{
+
+	switch(action.type){
+		case 'EDIT_CLICKED':
+
+			return action.category
+
+		default:
+			return state;
+	}
+	return state
+}
+export const EditCat =(state='', action)=>{
+
+	switch(action.type){
+		case 'EDIT_CHOSEN_CAT':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+export const NewEditValue =(state='', action)=>{
+
+	switch(action.type){
+		case 'CHANGE_EDIT_VALUE':
+
+			return action.category
+
+		default:
+			return state;
+	}
+	return state
+}
+ 

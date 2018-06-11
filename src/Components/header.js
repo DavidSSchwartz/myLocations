@@ -27,6 +27,20 @@ class Header extends Component{
 			this.props.saveCats(newArray)
 			
 	}
+	handleEditClick=()=>{
+		let current = this.props.currentCats.indexOf(this.props.editCatValue)
+		if(current > -1){
+				this.props.currentCats.splice(current,1, this.props.newEditValue)
+
+				let editedArray=this.props.currentCats
+				this.props.saveCats(editedArray)
+		}
+		
+		
+		
+			
+		
+	}
 	render(){
 		return(
 			<div>
@@ -39,8 +53,8 @@ class Header extends Component{
 				<button onClick={()=>this.handleRemoveClick()}>
 				remove
 				</button>
-				<button>
-				button3
+				<button onClick={()=>this.handleEditClick()}>
+				edit
 				</button>
 			</div>
 		    	)

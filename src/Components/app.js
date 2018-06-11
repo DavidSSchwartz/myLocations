@@ -10,7 +10,10 @@ function mapStateToProps(state){
 		categoryValue:state.CategoryValue,
 		locationValue:state.LocationValue,
 		currentCats:state.CurrentCats,
-		removedCat:state.RemovedCat
+		removedCat:state.RemovedCat,
+		editCatValue:state.EditCatValue,
+		editCat:state.EditCat,
+		newEditValue:state.NewEditValue
 	
 
 	}

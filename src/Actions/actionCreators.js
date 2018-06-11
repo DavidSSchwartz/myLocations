@@ -22,3 +22,23 @@ export const removeCat=(category)=>{
 		category
 	}
 }
+export const editClicked=(category)=>{
+	return{
+		type:'EDIT_CLICKED',
+		category
+	}
+}
+export const editChosenCat=(Boolean)=>{
+	return{
+		type:'EDIT_CHOSEN_CAT',
+		Boolean
+	}
+}
+export const changeEditValue=(category)=>{
+	return{
+		type:'CHANGE_EDIT_VALUE',
+		category
+	}
+}
+
+

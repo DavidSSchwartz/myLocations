@@ -17,7 +17,10 @@ const defaultState={
 	CategoryValue: '',
 	LocationValue:'',
 	CurrentCats:[],
-	RemovedCat:''
+	RemovedCat:'',
+	EditCatValue:'',
+	EditCat:Boolean,
+	NewEditValue:''
 };
 
 
