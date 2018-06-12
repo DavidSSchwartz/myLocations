@@ -20,7 +20,8 @@ const defaultState={
 	RemovedCat:'',
 	EditCatValue:'',
 	EditCat:Boolean,
-	NewEditValue:''
+	NewEditValue:'',
+	NewValue:''
 };
 
 

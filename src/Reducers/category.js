@@ -71,4 +71,15 @@ export const NewEditValue =(state='', action)=>{
 	}
 	return state
 }
- 
+ export const NewValue =(state='', action)=>{
+
+	switch(action.type){
+		case 'CREATE_NEW_VALUE':
+
+			return action.value
+
+		default:
+			return state;
+	}
+	return state
+}

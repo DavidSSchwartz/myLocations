@@ -40,5 +40,9 @@ export const changeEditValue=(category)=>{
 		category
 	}
 }
-
-
+export const createNewValue=(value)=>{
+	return{
+		type:'CREATE_NEW_VALUE',
+		value
+	}
+}

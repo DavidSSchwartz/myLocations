@@ -28,15 +28,20 @@ class Header extends Component{
 			
 	}
 	handleEditClick=()=>{
-		let current = this.props.currentCats.indexOf(this.props.editCatValue)
-		if(current > -1){
-				this.props.currentCats.splice(current,1, this.props.newEditValue)
+		// let current = this.props.currentCats.indexOf(this.props.editCatValue)
+		// if(current > -1){
+		// 		this.props.currentCats.splice(current,1, this.props.newEditValue)
 
-				let editedArray=this.props.currentCats
-				this.props.saveCats(editedArray)
-		}
+		// 		let editedArray=this.props.currentCats
+		// 		this.props.saveCats(editedArray)
+ 		let current = this.props.currentCats.indexOf(this.props.editCatValue)
+		let handleEdit= this.props.editCatValue
+		let editedArray = this.props.currentCats.filter(cat => cat !== handleEdit)
+		editedArray.splice(current,0,this.props.newEditValue)
+
+		{this.props.newEditValue ? this.props.saveCats(editedArray) : ''}
 		
-		
+		this.props.editClicked(this.props.newEditValue)
 		
 			
 		

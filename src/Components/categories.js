@@ -12,30 +12,46 @@ class Categories extends Component{
 		this.props.saveCats(cats)
 		this.props.editChosenCat(false)
 	}
-	// componentWillReceiveProps(nextProps){
+	 componentWillReceiveProps(nextProps){
 
-	// 	if(nextProps.currentCats !== this.props.currentCats){
-	// 	}
+	 	// if(nextProps.newEditValue !== this.props.newEditValue){
+	 	// 	if(nextProps.newEditValue == '' && this.props.editCatValue){
+	 	// 		this.props.changeEditValue(this.props.editCatValue)
+	 	// 	}
+	 	// }
 
+	}
+	handleEditClick=(i, cat)=>{
+		this.setState({edit:i})
+		this.props.createNewValue(cat)
+
+	}
+
+	// handleEditClick=(e)=>{
+	// 	this.props.editClicked(e)
+	// 	this.props.editChosenCat(true)
+	// 	this.props.changeEditValue('')
 	// }
-	handleEditClick=(e)=>{
-		this.props.editClicked(e)
-		this.props.editChosenCat(true)
-	}
-	handleChange=(e)=>{
-		console.log(e)
-		this.props.changeEditValue(e)
-	}
+	// handleChange=(e)=>{
+	// 	console.log(e)
+	// 	this.props.changeEditValue(e)
+	// }
+	handleChange=()=>{}
 	render(){
 		console.log(this.props.currentCats)
 		return(
 			<div>
 					{this.props.currentCats.map((cat, i)=>
 						
-						
-							<div key={i}>	
+						<div key={i}>
+							<button onClick={()=>this.handleEditClick(i, cat)}>
+								edit
+							</button>
+							{this.state.edit === i ? <input type="text" value={this.props.newValue} onChange={(e)=>this.props.createNewValue(e.target.value)}/>:
+								<div>	
 								{cat}
-							</div>
+							</div>}
+						</div>
 						)}
 						
 					<div>add category
