@@ -83,4 +83,10 @@ export const changeLocationCategory=(category)=>{
 		category
 	}
 }
+export const removeLoc=(location)=>{
+	return{
+		type:'REMOVE_LOC',
+		location
+	}
+}
 

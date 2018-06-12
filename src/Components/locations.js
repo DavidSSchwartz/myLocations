@@ -13,7 +13,7 @@ class Locations extends Component{
 	}
 
 	render(){
-		console.log(this)
+		console.log(this.props)
 		return(
 			<div className="locationsList">
 					{this.props.locations.map((loc,i)=>
@@ -58,7 +58,16 @@ class Locations extends Component{
 					</select>
 				</div>
 				<div>remove location
+					<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
+					<option selected="selected">remove</option>
+					{this.props.locations.map((loc,i)=>
+						<option value={loc.Name} key={i}>
+							{loc.Name}
+						</option>
 
+						
+						)}
+					</select>
 				</div>
 			</div>
 		    	)

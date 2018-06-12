@@ -33,13 +33,21 @@ class Header extends Component{
 
 	}
 	handleRemoveClick=()=>{
+		//Category Removal
+		let handleCatRemoval = this.props.removedCat
 
-		let handleRemoval = this.props.removedCat
+		let newCatArray = this.props.currentCats.filter(cat => cat !== handleCatRemoval)
 
+		this.props.saveCats(newCatArray)
 
-		let newArray = this.props.currentCats.filter(cat => cat !== handleRemoval)
+		//Location Removal
+		let handleLocRemoval = this.props.removedLocation
+	console.log(handleLocRemoval)
+		let newLocArray = this.props.locations.filter(loc => loc.Name !== handleLocRemoval)
+		console.log(handleLocRemoval)
+		console.log(newLocArray)
+		this.props.saveLocations(newLocArray)
 
-			this.props.saveCats(newArray)
 			
 	}
 	handleEditClick=()=>{

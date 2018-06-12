@@ -20,7 +20,8 @@ function mapStateToProps(state){
 		locationName:state.LocationName,
 		locationAddress:state.LocationAddress,
 		locationCoordinates:state.LocationCoordinates,
-		locationCategory:state.LocationCategory
+		locationCategory:state.LocationCategory,
+		removedLocation:state.RemovedLocation
 	
 
 	}

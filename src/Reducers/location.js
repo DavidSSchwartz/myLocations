@@ -58,3 +58,15 @@ export const LocationCategory =(state='', action)=>{
 	}
 	return state
 }
+export const RemovedLocation =(state='', action)=>{
+
+	switch(action.type){
+		case 'REMOVE_LOC':
+
+			return action.location
+
+		default:
+			return state;
+	}
+	return state
+}
