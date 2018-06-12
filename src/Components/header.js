@@ -66,15 +66,25 @@ class Header extends Component{
 		
 		// this.props.editClicked(this.props.newEditValue)
 			
-		 let current = this.props.currentCats.indexOf(this.props.oldValueCats)
-			
-				this.props.currentCats.splice(current,1, this.props.newValueCats)
+		if(this.props.topic === 'categories'){
+			let currentCat = this.props.currentCats.indexOf(this.props.oldValueCats)
+				
+			this.props.currentCats.splice(currentCat,1, this.props.newValueCats)
 
-				let editedArray=this.props.currentCats
-				this.props.saveCats(editedArray)
+			let editedCatArray=this.props.currentCats
+			this.props.saveCats(editedCatArray)
 			this.props.editComplete(-1)
-			
+		}
+		let currentLoc = this.props.locations.indexOf(this.props.oldLocationValue)
+		console.log(this.props.oldLocationValue)
+		console.log(currentLoc)
+		if(currentLoc > -1){
+			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:this.props.newLocationCoordinates, Category:this.props.newLocationCategory})
 
+			let editedLocArray=this.props.locations
+			this.props.saveLocations(editedLocArray)
+			this.props.editComplete(-1)
+		}
 			
 
 		

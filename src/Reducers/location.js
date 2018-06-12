@@ -118,3 +118,15 @@ export const NewLocationCategory =(state='', action)=>{
 	}
 	return state
 }
+export const OldLocationValue =(state=[], action)=>{
+
+	switch(action.type){
+		case 'CATCH_OLD_LOC_VAL':
+
+			return action.location
+
+		default:
+			return state;
+	}
+	return state
+}

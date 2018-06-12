@@ -35,8 +35,8 @@ document.getElementById('result').innerHTML= sessionStorage.getItem("Location1")
 					</MainContent>
 				</content>
 				<footer>
-					<Link to="/Categories">Categories</Link>
-					<Link to="/Locations">Locations</Link>
+					<Link onClick={()=>this.props.whichTopic('categories')} to="/Categories">Categories</Link>
+					<Link onClick={()=>this.props.whichTopic('locations')} to="/Locations">Locations</Link>
 				</footer>
 			</div>
 			

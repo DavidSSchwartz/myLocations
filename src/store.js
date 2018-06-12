@@ -14,6 +14,7 @@ const history1 = createBrowserHistory();
 
 //create an object for the default data
 const defaultState={
+	Topic:'',
 	CategoryValue: '',
 	CurrentCats:[],
 	RemovedCat:'',
@@ -32,7 +33,8 @@ const defaultState={
 	NewLocationName:'',
 	NewLocationAddress:'',
 	NewLocationCoordinates:Number,
-	NewLocationCategory:''
+	NewLocationCategory:'',
+	OldLocationValue:[]
 };
 
 

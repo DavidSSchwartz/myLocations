@@ -7,6 +7,7 @@ import {withRouter} from 'react-router';
 function mapStateToProps(state){
 
 	return{
+		topic:state.Topic,
 		categoryValue:state.CategoryValue,
 		currentCats:state.CurrentCats,
 		removedCat:state.RemovedCat,
@@ -25,7 +26,8 @@ function mapStateToProps(state){
 		newLocationName:state.NewLocationName,
 		newLocationAddress:state.NewLocationAddress,
 		newLocationCoordinates:state.NewLocationCoordinates,
-		newLocationCategory:state.NewLocationCategory
+		newLocationCategory:state.NewLocationCategory,
+		oldLocationValue:state.OldLocationValue
 	
 
 	}

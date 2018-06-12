@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import {
+	Topic,
 	CategoryValue,
 	CurrentCats,
 	RemovedCat,
@@ -21,11 +22,13 @@ import {
 	NewLocationName,
 	NewLocationAddress,
 	NewLocationCoordinates,
-	NewLocationCategory
+	NewLocationCategory,
+	OldLocationValue
 }
 from './location';
 
 export const rootReducer = combineReducers({
+	Topic,
 	CategoryValue,
 	CurrentCats,
 	RemovedCat,
@@ -45,5 +48,6 @@ export const rootReducer = combineReducers({
 	NewLocationAddress,
 	NewLocationCoordinates,
 	NewLocationCategory,
+	OldLocationValue,
 	routing: routerReducer
 });

@@ -1,3 +1,17 @@
+
+
+export const Topic =(state='', action)=>{
+
+	switch(action.type){
+		case 'WHICH_TOPIC':
+
+			return action.value
+
+		default:
+			return state;
+	}
+	return state
+}
 export const CategoryValue =(state='', action)=>{
 
 	switch(action.type){

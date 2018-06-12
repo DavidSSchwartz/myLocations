@@ -1,3 +1,9 @@
+export const whichTopic=(value)=>{
+	return{
+		type:'WHICH_TOPIC',
+		value
+	}
+}
 export const changeCategoryValue=(value)=>{
 	return{
 		type:'CHANGE_CATEGORY_VALUE',
@@ -111,5 +117,11 @@ export const editLocationCategory=(category)=>{
 	return{
 		type:'EDIT_LOCATION_CATEGORY',
 		category
+	}
+}
+export const catchOldLocVal=(location)=>{
+	return{
+		type:'CATCH_OLD_LOC_VAL',
+		location
 	}
 }

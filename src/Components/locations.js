@@ -13,8 +13,23 @@ class Locations extends Component{
 		console.log(Locs)
 		this.props.saveLocations(Locs)
 	}
-	handleEditClick=(i, loc)=>{
+	componentWillReceiveProps(nextProps){
 
+	 	// if(nextProps.newEditValue !== this.props.newEditValue){
+	 	// 	if(nextProps.newEditValue == '' && this.props.editCatValue){
+	 	// 		this.props.changeEditValue(this.props.editCatValue)
+	 	// 	}
+	 	// }
+	 	if(nextProps.edited !== this.props.edited){
+		 		if(nextProps.edited == -1){
+		 		this.setState({
+		 			edit:nextProps.edited
+		 		})
+			 }
+	 	}
+	}
+	handleEditClick=(i, loc)=>{
+			this.props.editComplete('')
 		this.setState({
 			edit:i
 		})
@@ -22,6 +37,7 @@ class Locations extends Component{
 		this.props.editLocationAddress(loc.Address)
 		this.props.editLocationCoordinates(loc.Coordinates)
 	//	this.props.editLocationCategory(loc.Category)
+		this.props.catchOldLocVal(loc)
 
 	}
 	handleNameChange=()=>{
@@ -51,12 +67,12 @@ class Locations extends Component{
 									<input placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.props.editLocationAddress(e.target.value)}/>
 									<input placeholder="coordinates" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.props.editLocationCoordinates(e.target.value)}/>
 									<select name="locCats" onChange={(e)=>this.props.editLocationCategory(e.target.value)}>
-									<option selected='selected'>{loc.Category}</option>
-									 {this.props.currentCats.map((cat, i)=>
-												<option value ={cat} key={i} >
-													{cat}
-												</option>
-									)}
+										<option selected='selected'>{loc.Category}</option>
+										 {this.props.currentCats.map((cat, i)=>
+													<option value ={cat} key={i} >
+														{cat}
+													</option>
+										)}
 									</select> 
 								</div>
 								:
