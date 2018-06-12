@@ -34,7 +34,8 @@ const defaultState={
 	NewLocationAddress:'',
 	NewLocationCoordinates:Number,
 	NewLocationCategory:'',
-	OldLocationValue:[]
+	OldLocationValue:[],
+	AlertAddIncomplete:Boolean
 };
 
 

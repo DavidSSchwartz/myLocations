@@ -130,3 +130,15 @@ export const OldLocationValue =(state=[], action)=>{
 	}
 	return state
 }
+export const AlertAddIncomplete =(state=[], action)=>{
+
+	switch(action.type){
+		case 'ADD_INCOMPLETE':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}

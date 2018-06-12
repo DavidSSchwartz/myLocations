@@ -27,7 +27,8 @@ function mapStateToProps(state){
 		newLocationAddress:state.NewLocationAddress,
 		newLocationCoordinates:state.NewLocationCoordinates,
 		newLocationCategory:state.NewLocationCategory,
-		oldLocationValue:state.OldLocationValue
+		oldLocationValue:state.OldLocationValue,
+		alertAddIncomplete:state.AlertAddIncomplete
 	
 
 	}

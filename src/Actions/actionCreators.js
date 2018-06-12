@@ -125,3 +125,9 @@ export const catchOldLocVal=(location)=>{
 		location
 	}
 }
+export const addIncomplete=(Boolean)=>{
+	return{
+		type:'ADD_INCOMPLETE',
+		Boolean
+	}
+}

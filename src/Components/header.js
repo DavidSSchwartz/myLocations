@@ -27,7 +27,10 @@ class Header extends Component{
 			this.props.saveLocations(locAdded)
 			
 			console.log(this.props.currentCats)
-			
+			this.props.addIncomplete(false)
+		}
+		else{
+			this.props.addIncomplete(true)
 		}
 
 

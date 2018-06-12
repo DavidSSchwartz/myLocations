@@ -12,6 +12,7 @@ class Locations extends Component{
 	componentWillMount(){
 		console.log(Locs)
 		this.props.saveLocations(Locs)
+		this.props.addIncomplete(false)
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -98,6 +99,7 @@ class Locations extends Component{
 								</option>)}
 					</select>
 				</div>
+				{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
 				<div>remove location
 					<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
 					<option value="selected" selected="selected">remove</option>
