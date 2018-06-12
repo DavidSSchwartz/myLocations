@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { cats } from '../data/categories';
 
 class Categories extends Component{
 	constructor(){
@@ -9,7 +8,7 @@ class Categories extends Component{
 		}
 	}
 	componentWillMount(){
-		this.props.saveCats(cats)
+		
 		this.props.editChosenCat(false)
 	}
 	 componentWillReceiveProps(nextProps){

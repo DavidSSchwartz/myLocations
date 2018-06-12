@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Locs } from '../data/locations';
+import style from '../Style/locations.css';
 
 class Locations extends Component{
 	constructor(){
@@ -7,14 +8,15 @@ class Locations extends Component{
 
 	}
 	componentWillMount(){
+
 }
 
 	render(){
 
 		return(
-			<div>
+			<div className="locationsList">
 					{Locs.map((loc,i)=>
-						<div key={i}>
+						<div className="locationInfo" key={i}>
 							<div>{loc.Name}</div>
 							<div>{loc.Address}</div>
 							<div>{loc.Coordinates}</div>
@@ -24,6 +26,14 @@ class Locations extends Component{
 				}
 				<div>add location
 					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
+					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
+					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
+					<select>
+					 {this.props.currentCats.map((cat, i)=>
+								<option value ={cat} key={i} >
+									{cat}
+								</option>)}
+					</select>
 				</div>
 			</div>
 		    	)

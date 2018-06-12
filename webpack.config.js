@@ -10,7 +10,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
+
+      },
+      {
+         test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   },
@@ -22,7 +27,11 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot:true
   }
 };

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import { cats } from '../data/categories';
 
 class Header extends Component{
 	constructor(){
 		super()
 	}
+	componentWillMount(){
+		console.log('mounted')
+		this.props.saveCats(cats)
 
+	}
 	handleAddClick=()=>{
 		if (this.props.categoryValue !== ''){
 			
