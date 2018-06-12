@@ -71,12 +71,39 @@ export const NewEditValue =(state='', action)=>{
 	}
 	return state
 }
- export const NewValue =(state='', action)=>{
+ export const NewValueCats=(state='', action)=>{
 
 	switch(action.type){
 		case 'CREATE_NEW_VALUE':
 
 			return action.value
+
+
+		default:
+			return state;
+	}
+	return state
+}
+export const OldValueCats =(state='', action)=>{
+
+	switch(action.type){
+		case 'CATCH_OLD_VALUE':
+
+			return action.category
+
+
+		default:
+			return state;
+	}
+	return state
+}
+export const Edited =(state='', action)=>{
+
+	switch(action.type){
+		case 'EDIT_COMPLETE':
+
+			return action.Number
+
 
 		default:
 			return state;

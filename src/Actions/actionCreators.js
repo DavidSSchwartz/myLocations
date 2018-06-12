@@ -44,5 +44,18 @@ export const createNewValue=(value)=>{
 	return{
 		type:'CREATE_NEW_VALUE',
 		value
+		
+	}
+}
+export const catchOldValue=(category)=>{
+	return{
+		type:'CATCH_OLD_VALUE',
+		category
+	}
+}
+export const editComplete=(Number)=>{
+	return{
+		type:'EDIT_COMPLETE',
+		Number
 	}
 }

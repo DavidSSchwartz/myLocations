@@ -19,10 +19,20 @@ class Categories extends Component{
 	 	// 		this.props.changeEditValue(this.props.editCatValue)
 	 	// 	}
 	 	// }
-
+	 	if(nextProps.edited !== this.props.edited){
+		 		if(nextProps.edited == -1){
+		 		this.setState({
+		 			edit:nextProps.edited
+		 		})
+			 }
+	 	}
 	}
 	handleEditClick=(i, cat)=>{
-		this.setState({edit:i})
+		console.log(i)
+		this.props.editComplete('')
+		this.setState({
+			edit:i
+		})
 		this.props.createNewValue(cat)
 
 	}
@@ -36,9 +46,13 @@ class Categories extends Component{
 	// 	console.log(e)
 	// 	this.props.changeEditValue(e)
 	// }
-	handleChange=()=>{}
+	handleChange=(e, cat)=>{
+		console.log('firing')
+		this.props.createNewValue(e)
+		this.props.catchOldValue(cat)
+	}
 	render(){
-		console.log(this.props.currentCats)
+		console.log(this.props.edited)
 		return(
 			<div>
 					{this.props.currentCats.map((cat, i)=>
@@ -47,7 +61,7 @@ class Categories extends Component{
 							<button onClick={()=>this.handleEditClick(i, cat)}>
 								edit
 							</button>
-							{this.state.edit === i ? <input type="text" value={this.props.newValue} onChange={(e)=>this.props.createNewValue(e.target.value)}/>:
+							{this.state.edit === i ? <input type="text" value={this.props.newValueCats} onChange={(e)=>this.handleChange(e.target.value, cat)}/>:
 								<div>	
 								{cat}
 							</div>}

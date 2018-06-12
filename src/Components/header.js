@@ -34,16 +34,26 @@ class Header extends Component{
 
 		// 		let editedArray=this.props.currentCats
 		// 		this.props.saveCats(editedArray)
- 		let current = this.props.currentCats.indexOf(this.props.editCatValue)
-		let handleEdit= this.props.editCatValue
-		let editedArray = this.props.currentCats.filter(cat => cat !== handleEdit)
-		editedArray.splice(current,0,this.props.newEditValue)
+ 	// 	let current = this.props.currentCats.indexOf(this.props.editCatValue)
+		// let handleEdit= this.props.editCatValue
+		// let editedArray = this.props.currentCats.filter(cat => cat !== handleEdit)
+		// editedArray.splice(current,0,this.props.newEditValue)
 
-		{this.props.newEditValue ? this.props.saveCats(editedArray) : ''}
+		// {this.props.newEditValue ? this.props.saveCats(editedArray) : ''}
 		
-		this.props.editClicked(this.props.newEditValue)
-		
+		// this.props.editClicked(this.props.newEditValue)
 			
+		 let current = this.props.currentCats.indexOf(this.props.oldValueCats)
+			
+				this.props.currentCats.splice(current,1, this.props.newValueCats)
+
+				let editedArray=this.props.currentCats
+				this.props.saveCats(editedArray)
+			this.props.editComplete(-1)
+			
+
+			
+
 		
 	}
 	render(){

@@ -14,7 +14,9 @@ function mapStateToProps(state){
 		editCatValue:state.EditCatValue,
 		editCat:state.EditCat,
 		newEditValue:state.NewEditValue,
-		newValue:state.NewValue
+		newValueCats:state.NewValueCats,
+		oldValueCats:state.OldValueCats,
+		edited:state.Edited
 	
 
 	}

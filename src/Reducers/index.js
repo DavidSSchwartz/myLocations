@@ -7,7 +7,9 @@ import {
 	EditCatValue,
 	EditCat,
 	NewEditValue,
-	NewValue
+	NewValueCats,
+	OldValueCats,
+	Edited
 } from './category';
 import {
 	LocationValue
@@ -21,7 +23,9 @@ export const rootReducer = combineReducers({
 	EditCatValue,
 	EditCat,
 	NewEditValue,
-	NewValue,
+	NewValueCats,
+	OldValueCats,
+	Edited,
 	LocationValue,
 	routing: routerReducer
 });

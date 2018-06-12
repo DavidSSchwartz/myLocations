@@ -21,7 +21,9 @@ const defaultState={
 	EditCatValue:'',
 	EditCat:Boolean,
 	NewEditValue:'',
-	NewValue:''
+	NewValueCats:'',
+	OldValueCats:'',
+	Edited:Number
 };
 
 
