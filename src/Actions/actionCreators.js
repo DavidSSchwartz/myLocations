@@ -89,4 +89,27 @@ export const removeLoc=(location)=>{
 		location
 	}
 }
-
+export const editLocationName=(name)=>{
+	return{
+		type:'EDIT_LOCATION_NAME',
+		name
+	}
+}
+export const editLocationAddress=(address)=>{
+	return{
+		type:'EDIT_LOCATION_ADDRESS',
+		address
+	}
+}
+export const editLocationCoordinates=(Number)=>{
+	return{
+		type:'EDIT_LOCATION_COORDINATES',
+		Number
+	}
+}
+export const editLocationCategory=(category)=>{
+	return{
+		type:'EDIT_LOCATION_CATEGORY',
+		category
+	}
+}

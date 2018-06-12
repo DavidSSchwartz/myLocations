@@ -21,7 +21,11 @@ function mapStateToProps(state){
 		locationAddress:state.LocationAddress,
 		locationCoordinates:state.LocationCoordinates,
 		locationCategory:state.LocationCategory,
-		removedLocation:state.RemovedLocation
+		removedLocation:state.RemovedLocation,
+		newLocationName:state.NewLocationName,
+		newLocationAddress:state.NewLocationAddress,
+		newLocationCoordinates:state.NewLocationCoordinates,
+		newLocationCategory:state.NewLocationCategory
 	
 
 	}

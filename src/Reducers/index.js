@@ -17,7 +17,11 @@ import {
 	LocationAddress,
 	LocationCoordinates,
 	LocationCategory,
-	RemovedLocation
+	RemovedLocation,
+	NewLocationName,
+	NewLocationAddress,
+	NewLocationCoordinates,
+	NewLocationCategory
 }
 from './location';
 
@@ -37,5 +41,9 @@ export const rootReducer = combineReducers({
 	LocationCoordinates,
 	LocationCategory,
 	RemovedLocation,
+	NewLocationName,
+	NewLocationAddress,
+	NewLocationCoordinates,
+	NewLocationCategory,
 	routing: routerReducer
 });

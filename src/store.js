@@ -28,7 +28,11 @@ const defaultState={
 	LocationAddress:'',
 	LocationCoordinates:Number,
 	LocationCategory:'',
-	RemovedLocation:''
+	RemovedLocation:'',
+	NewLocationName:'',
+	NewLocationAddress:'',
+	NewLocationCoordinates:Number,
+	NewLocationCategory:''
 };
 
 
