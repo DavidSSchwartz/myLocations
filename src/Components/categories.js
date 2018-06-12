@@ -73,13 +73,14 @@ class Categories extends Component{
 					</div>
 					<div>remove category
 						<select name="categories" onChange={(e)=>this.props.removeCat(e.target.value)}>
+						    <option selected='selected'>remove</option>
 						    {this.props.currentCats.map((cat, i)=>
 								<option value ={cat} key={i} >
 									{cat}
 								</option>)}
 						  </select>
 					</div>
-					<div> edit category
+					{/*<div> edit category
 						<select name="categories" onChange={(e)=>this.handleEditClick(e.target.value)}>
 						 
 						    {this.props.currentCats.map((cat, i)=>
@@ -89,7 +90,7 @@ class Categories extends Component{
 
 						  </select>
 						  {this.props.editCat && <input type='text' value={this.props.newEditValue || this.props.editCatValue} onChange={(e)=>this.handleChange(e.target.value)} />}
-					</div>
+					</div>*/}
 
 			</div>
 		    	)

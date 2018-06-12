@@ -8,7 +8,6 @@ function mapStateToProps(state){
 
 	return{
 		categoryValue:state.CategoryValue,
-		locationValue:state.LocationValue,
 		currentCats:state.CurrentCats,
 		removedCat:state.RemovedCat,
 		editCatValue:state.EditCatValue,
@@ -16,7 +15,12 @@ function mapStateToProps(state){
 		newEditValue:state.NewEditValue,
 		newValueCats:state.NewValueCats,
 		oldValueCats:state.OldValueCats,
-		edited:state.Edited
+		edited:state.Edited,
+		locations:state.Locations,
+		locationName:state.LocationName,
+		locationAddress:state.LocationAddress,
+		locationCoordinates:state.LocationCoordinates,
+		locationCategory:state.LocationCategory
 	
 
 	}

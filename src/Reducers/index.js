@@ -12,7 +12,11 @@ import {
 	Edited
 } from './category';
 import {
-	LocationValue
+	Locations,
+	LocationName,
+	LocationAddress,
+	LocationCoordinates,
+	LocationCategory
 }
 from './location';
 
@@ -26,6 +30,10 @@ export const rootReducer = combineReducers({
 	NewValueCats,
 	OldValueCats,
 	Edited,
-	LocationValue,
+	Locations,
+	LocationName,
+	LocationAddress,
+	LocationCoordinates,
+	LocationCategory,
 	routing: routerReducer
 });

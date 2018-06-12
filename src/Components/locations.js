@@ -8,32 +8,57 @@ class Locations extends Component{
 
 	}
 	componentWillMount(){
-
-}
+		console.log(Locs)
+		this.props.saveLocations(Locs)
+	}
 
 	render(){
-
+		console.log(this)
 		return(
 			<div className="locationsList">
-					{Locs.map((loc,i)=>
+					{this.props.locations.map((loc,i)=>
 						<div className="locationInfo" key={i}>
-							<div>{loc.Name}</div>
-							<div>{loc.Address}</div>
-							<div>{loc.Coordinates}</div>
-							<div>{loc.Category}</div>
+							<button onClick={()=>this.handleEditClick(i, cat)}>
+								edit
+							</button>
+							{/*{this.state.edit === i ? 
+								<div>
+									<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
+									<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
+									<input placeholder="coordinates" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
+									<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
+									<option selected='selected'>category</option>
+									 {this.props.currentCats.map((cat, i)=>
+												<option value ={cat} key={i} >
+													{cat}
+												</option>)}
+									</select> 
+								</div>
+								:*/}
+								<div className="locationInfo">
+									<div>{loc.Name}</div>
+									<div>{loc.Address}</div>
+									<div>{loc.Coordinates}</div>
+									<div>{loc.Category}</div>
+								</div>
+						{	/*}*/}
 						</div>
-						)
-				}
+						)}
+				
 				<div>add location
-					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
-					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
-					<input type="text" value={this.props.locationValue} onChange={(e)=>this.props.changeLocationValue(e.target.value)}/>
-					<select>
+					<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
+					<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
+					<input placeholder="coordinates" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
+					<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
+					<option selected='selected'>category</option>
 					 {this.props.currentCats.map((cat, i)=>
 								<option value ={cat} key={i} >
 									{cat}
 								</option>)}
 					</select>
+				</div>
+				<div>remove location
+
 				</div>
 			</div>
 		    	)

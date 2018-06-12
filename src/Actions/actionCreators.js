@@ -4,12 +4,6 @@ export const changeCategoryValue=(value)=>{
 		value
 	}
 }
-export const changeLocationValue=(value)=>{
-	return{
-		type:'CHANGE_LOCATION_VALUE',
-		value
-	}
-}
 export const saveCats=(categories)=>{
 	return{
 		type:'SAVE_CATS',
@@ -59,3 +53,34 @@ export const editComplete=(Number)=>{
 		Number
 	}
 }
+export const saveLocations=(locations)=>{
+	return{
+		type:'SAVE_LOCATIONS',
+		locations
+	}
+}
+export const changeLocationName=(name)=>{
+	return{
+		type:'CHANGE_LOCATION_NAME',
+		name
+	}
+}
+export const changeLocationAddress=(address)=>{
+	return{
+		type:'CHANGE_LOCATION_ADDRESS',
+		address
+	}
+}
+export const changeLocationCoordinates=(Number)=>{
+	return{
+		type:'CHANGE_LOCATION_COORDINATES',
+		Number
+	}
+}
+export const changeLocationCategory=(category)=>{
+	return{
+		type:'CHANGE_LOCATION_CATEGORY',
+		category
+	}
+}
+

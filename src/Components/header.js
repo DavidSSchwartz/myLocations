@@ -20,7 +20,17 @@ class Header extends Component{
 			console.log(this.props.currentCats)
 			
 		}
-		//this.props.saveCats(this.props.currentCats + this.props.categoryValue)
+		if (this.props.locationName !== '' && this.props.locationAddress !== '' && this.props.locationCoordinates !== '' && (this.props.locationCategory !== '' && this.props.locationCategory !== 'category')){
+			
+			let locAdded= this.props.locations.concat([{Name:this.props.locationName, Address:this.props.locationAddress, Coordinates:this.props.locationCoordinates,Category:this.props.locationCategory}])
+			
+			this.props.saveLocations(locAdded)
+			
+			console.log(this.props.currentCats)
+			
+		}
+
+
 	}
 	handleRemoveClick=()=>{
 

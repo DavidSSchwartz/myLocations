@@ -15,7 +15,6 @@ const history1 = createBrowserHistory();
 //create an object for the default data
 const defaultState={
 	CategoryValue: '',
-	LocationValue:'',
 	CurrentCats:[],
 	RemovedCat:'',
 	EditCatValue:'',
@@ -23,7 +22,12 @@ const defaultState={
 	NewEditValue:'',
 	NewValueCats:'',
 	OldValueCats:'',
-	Edited:Number
+	Edited:Number,
+	Locations:[],
+	LocationName:'',
+	LocationAddress:'',
+	LocationCoordinates:Number,
+	LocationCategory:''
 };
 
 
