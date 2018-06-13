@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { cats } from '../data/categories';
+import style from '../Style/header.css'
 
 class Header extends Component{
 	constructor(){
@@ -93,19 +94,21 @@ class Header extends Component{
 	}
 	render(){
 		return(
-			<div>
-				<header>
+			<div className="header">
+				<header className="title">
 					MyLocations
 				</header>
-				<button onClick={()=>this.handleAddClick()}>
-					Add
-				</button>
-				<button onClick={()=>this.handleRemoveClick()}>
-				remove
-				</button>
-				<button onClick={()=>this.handleEditClick()}>
-				edit
-				</button>
+				<div className="topBtnsDiv">
+					<button className="topBtn" onClick={()=>this.handleAddClick()}>
+						Add
+					</button>
+					<button className="topBtn" onClick={()=>this.handleRemoveClick()}>
+						Remove
+					</button>
+					<button className="topBtn" onClick={()=>this.handleEditClick()}>
+						Edit
+					</button>
+				</div>
 			</div>
 		    	)
 			}

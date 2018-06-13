@@ -44,12 +44,6 @@ class Locations extends Component{
 		 		})
 			 }
 	 	}
-
-	 	if(nextProps.showingMap !== this.props.showingMap){
-	 		this.setState({
-	 			edit:true
-	 		})
-	 	}
 	}
 	handleEditClick=(i, loc)=>{
 			this.props.editComplete('')
@@ -171,6 +165,7 @@ class Locations extends Component{
 				locCat:locCa,
 				locDisplay:'none'
 			})
+			
 
 	}
 	handleBackClick=()=>{
