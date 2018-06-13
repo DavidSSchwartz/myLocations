@@ -3,7 +3,7 @@
 	height:50px;
 	width:100%;
     justify-content: space-around;
-    background-color: #5193b1;
+    background-color: #067faa;
 }
 .title{
 	align-self: center;
@@ -21,22 +21,18 @@
 	border-top-right-radius: 6.5px;
     border-top-left-radius: 6.5px;
     margin: 0 5px;
-    font-size: 1.1em;
+    font-size: 1.5em;
     border: 0;
     padding: 3.5px 13px;
     color: #f5f7f8;
     text-shadow: 1px 1px 3px black;
     cursor:pointer;
+        min-width: 99px;
+    min-height: 48px;
 }
 .topBtn:hover{
 	background-color: #dbbe48;
 }
 .topBtn:active{
 	background-color: #c09f36;
-}
-body{
-	padding:0;
-	margin:0;
-	box-sizing: border-box;
-	font-family: sans-serif;
 }
