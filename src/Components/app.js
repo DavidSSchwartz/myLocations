@@ -30,7 +30,8 @@ function mapStateToProps(state){
 		oldLocationValue:state.OldLocationValue,
 		alertAddIncomplete:state.AlertAddIncomplete,
 		categorySorted:state.CategorySorted,
-		choseACatLoc:state.ChoseACatLoc
+		choseACatLoc:state.ChoseACatLoc,
+		properties:state.Properties
 	
 
 	}

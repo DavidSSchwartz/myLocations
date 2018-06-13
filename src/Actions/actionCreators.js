@@ -143,3 +143,10 @@ export const chooseACatLoc=(Boolean)=>{
 		Boolean
 	}
 }
+export const viewProperties=(value)=>{
+	return{
+		type:'VIEW_PROPERTIES',
+		value
+	}
+}
+

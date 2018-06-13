@@ -37,7 +37,8 @@ const defaultState={
 	OldLocationValue:[],
 	AlertAddIncomplete:Boolean,
 	CategorySorted:Boolean,
-	ChoseACatLoc:Boolean
+	ChoseACatLoc:Boolean,
+	Properties:''
 };
 
 

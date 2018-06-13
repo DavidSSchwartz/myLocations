@@ -166,4 +166,16 @@ export const ChoseACatLoc =(state=[], action)=>{
 	}
 	return state
 }
+export const Properties =(state=[], action)=>{
+
+	switch(action.type){
+		case 'VIEW_PROPERTIES':
+
+			return action.value
+
+		default:
+			return state;
+	}
+	return state
+}
 

@@ -4,6 +4,7 @@ import style from '../Style/locations.css';
 import { EditLocations } from './Locations/editLocations';
 import { MapCats } from './Locations/mapCats';
 import { MyMapComponent }  from './Locations/Map';
+import { ViewProperties } from './Locations/viewProperties';
 class Locations extends Component{
 	constructor(){
 		super()
@@ -13,7 +14,10 @@ class Locations extends Component{
 			locDisplay:'block',
 			locationCategory:'',
 			nameClicked:false,
-			locName:''
+			locName:'',
+			locAddr:'',
+			locCoord:Number,
+			locCat:''
 		}
 	}
 	componentWillMount(){
@@ -22,7 +26,7 @@ class Locations extends Component{
 		this.props.addIncomplete(false)
 		this.props.categorySorting(false)
 		this.props.chooseACatLoc(false)
-
+		this.props.viewProperties('none')
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -129,10 +133,13 @@ class Locations extends Component{
 				locDisplay:'block'
 			})
 		}
-	handleNameClick=(loc)=>{
+	handleNameClick=(locN, locA, locCo, locCa)=>{
 			this.setState({
 				nameClicked:true,
-				locName:loc,
+				locName:locN,
+				locAddr:locA,
+				locCoord:locCo,
+				locCat:locCa,
 				locDisplay:'none'
 			})
 
@@ -143,6 +150,8 @@ class Locations extends Component{
 				locDisplay:'block'
 			})
 	}
+	
+
 	render(){
 		console.log(this.props.locations)
 		return(
@@ -159,7 +168,7 @@ class Locations extends Component{
 								:
 
 								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
-									<div className='locationName' onClick={()=> this.handleNameClick(loc.Name) }>{loc.Name}</div>
+									<div className='locationName' onClick={()=> this.handleNameClick(loc.Name, loc.Address, loc.Coordinates, loc.Category) }>{loc.Name}</div>
 									<div className='locationDetail'>{loc.Address}</div>
 									<div className='locationDetail'>{loc.Coordinates}</div>
 									<div className='locationDetail'>{loc.Category}</div>
@@ -171,7 +180,23 @@ class Locations extends Component{
 	
 					</div>
 						)}
-					{this.state.nameClicked && <div>{this.state.locName} <button className="showOption">View properties</button> <button className="showOption">View on Map</button> <div onClick={()=>this.handleBackClick()}>back to locations</div></div>}
+					{this.state.nameClicked && 
+						<div> 
+							{this.state.locName} 
+							<div style={{display:this.props.properties}}>
+								<div className='locationDetail'>{this.state.locAddr} </div>
+								<div className='locationDetail'>{this.state.locCoord} </div>
+								<div className='locationDetail'>{this.state.locCat}  </div>
+							</div>
+							<ViewProperties {...this.props}/>
+							<button className="showOption" >
+								View on Map
+							</button> 
+							<button onClick={()=>this.handleBackClick()}>
+							back to locations
+							</button>
+						</div>
+					}
 					{this.props.categorySorted && this.state.orderedCats}
 					{this.props.choseACatLoc &&  this.state.locationCategory}
 				
