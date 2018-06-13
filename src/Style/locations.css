@@ -4,3 +4,9 @@
 .locationInfo{
 	display:flex;
 }
+.locationName{
+	cursor:pointer;
+}
+.locationDetail{
+
+}

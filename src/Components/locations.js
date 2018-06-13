@@ -3,6 +3,7 @@ import { Locs } from '../data/locations';
 import style from '../Style/locations.css';
 import { EditLocations } from './Locations/editLocations';
 import { MapCats } from './Locations/mapCats';
+import { MyMapComponent }  from './Locations/Map';
 class Locations extends Component{
 	constructor(){
 		super()
@@ -10,7 +11,9 @@ class Locations extends Component{
 			edit:false,
 			state:'',
 			locDisplay:'block',
-			locationCategory:''
+			locationCategory:'',
+			nameClicked:false,
+			locName:''
 		}
 	}
 	componentWillMount(){
@@ -126,7 +129,20 @@ class Locations extends Component{
 				locDisplay:'block'
 			})
 		}
-	
+	handleNameClick=(loc)=>{
+			this.setState({
+				nameClicked:true,
+				locName:loc,
+				locDisplay:'none'
+			})
+
+	}
+	handleBackClick=()=>{
+		this.setState({
+				nameClicked:false,
+				locDisplay:'block'
+			})
+	}
 	render(){
 		console.log(this.props.locations)
 		return(
@@ -143,17 +159,19 @@ class Locations extends Component{
 								:
 
 								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
-									<div>{loc.Name}</div>
-									<div>{loc.Address}</div>
-									<div>{loc.Coordinates}</div>
-									<div>{loc.Category}</div>
+									<div className='locationName' onClick={()=> this.handleNameClick(loc.Name) }>{loc.Name}</div>
+									<div className='locationDetail'>{loc.Address}</div>
+									<div className='locationDetail'>{loc.Coordinates}</div>
+									<div className='locationDetail'>{loc.Category}</div>
 								</div>
+								
 							
 							}
 
 	
 					</div>
 						)}
+					{this.state.nameClicked && <div>{this.state.locName} <button className="showOption">View properties</button> <button className="showOption">View on Map</button> <div onClick={()=>this.handleBackClick()}>back to locations</div></div>}
 					{this.props.categorySorted && this.state.orderedCats}
 					{this.props.choseACatLoc &&  this.state.locationCategory}
 				
@@ -192,6 +210,15 @@ class Locations extends Component{
 					</select>
 					<button onClick={()=>this.handleButton()}>undo</button>
 
+				</div>
+				<div>
+				<MyMapComponent
+				  isMarkerShown
+				  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+				  loadingElement={<div style={{ height: `100%` }} />}
+				  containerElement={<div style={{ height: `400px` }} />}
+				  mapElement={<div style={{ height: `100%` }} />}
+				/>
 				</div>
 			</div>
 		    	)
