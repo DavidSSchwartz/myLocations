@@ -82,22 +82,30 @@ const location3= {"Name":"Haifi", "Address":"165 Shefa St","Coordinates": 343121
 const location4= {"Name":"Modiin" ,"Address": "89 Ovadia Sq","Coordinates": 54643765756, "Category":"Famous Site"}
 const location5= {"Name":"Netanya",  "Address":"18 HaYarkon St","Coordinates": 324342424, "Category":"View"}
 const location6= {"Name":"Tzfat",  "Address":"45 HaAri St","Coordinates":10000293332211, "Category":"Shopping"}
+const location7= {"Name":"Meron",  "Address":"68 Rashbi St","Coordinates":483798237598326, "Category":"Famous Site"}
+const location8= {"Name":"Golan",  "Address":"980 HaKablan St","Coordinates":43825657823, "Category":"View"}
 localStorage.setItem('Location1',JSON.stringify(location1))
 localStorage.setItem('Location2',JSON.stringify(location2))
 localStorage.setItem('Location3',JSON.stringify(location3))
 localStorage.setItem('Location4',JSON.stringify(location4))
 localStorage.setItem('Location5',JSON.stringify(location5))
 localStorage.setItem('Location6',JSON.stringify(location6))
+localStorage.setItem('Location7',JSON.stringify(location7))
+localStorage.setItem('Location8',JSON.stringify(location8))
 const Loc1=localStorage.getItem("Location1")
 const Loc2=localStorage.getItem("Location2")			
 const Loc3=localStorage.getItem("Location3")
 const Loc4=localStorage.getItem("Location4")
 const Loc5=localStorage.getItem("Location5")
 const Loc6=localStorage.getItem("Location6")
+const Loc7=localStorage.getItem("Location7")
+const Loc8=localStorage.getItem("Location8")
 						
 export const Locs =[JSON.parse(Loc1),
 JSON.parse(Loc2),
 JSON.parse(Loc3),
 JSON.parse(Loc4),
 JSON.parse(Loc5),
-JSON.parse(Loc6)]
+JSON.parse(Loc6),
+JSON.parse(Loc7),
+JSON.parse(Loc8)]

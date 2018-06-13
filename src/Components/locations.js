@@ -6,13 +6,16 @@ class Locations extends Component{
 	constructor(){
 		super()
 		this.state={
-			edit:false
+			edit:false,
+			state:'',
+			locDisplay:'block'
 		}
 	}
 	componentWillMount(){
 		console.log(Locs)
 		this.props.saveLocations(Locs)
 		this.props.addIncomplete(false)
+		this.props.categorySorting(false)
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -74,14 +77,40 @@ class Locations extends Component{
 
 	}
 
-		
+	handleCategorySort=()=>{
+	
+	
+		if(this.catSort.innerHTML == "sort by category" ){
+
+			this.orderedCats=(this.props.currentCats.map((cat,i)=>
+											this.props.locations.map((locs,i)=>
+												cat === locs.Category ?<div key={i}>{locs.Category} {locs.Name}</div>:console.log(i)
+										)).sort())
+			this.setState({
+				orderedCats:this.orderedCats
+			})
+			this.props.categorySorting(true)
+			this.setState({
+				locDisplay:'none'
+			})}	
+		else{
+			this.props.categorySorting(false)
+			this.setState({
+				locDisplay:'block'
+			})
+		}
+
+
+		{this.catSort.innerHTML=="unsort" ? this.catSort.innerHTML= "sort by category" : this.catSort.innerHTML= "unsort"}
+	
+	}
 	
 	render(){
 		console.log(this.props.locations)
 		return(
-			<div className="locationsList">
+			<div  className="locationsList">
 					{this.props.locations.map((loc,i)=>
-						<div className="locationInfo" key={i}>
+						<div style={{display:this.state.locDisplay}} className="locationInfo" key={i}>
 							<button onClick={()=>this.handleEditClick(i, loc)}>
 								edit
 							</button>
@@ -100,15 +129,20 @@ class Locations extends Component{
 									</select> 
 								</div>
 								:
-								<div className="locationInfo">
+
+								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
 									<div>{loc.Name}</div>
 									<div>{loc.Address}</div>
 									<div>{loc.Coordinates}</div>
 									<div>{loc.Category}</div>
 								</div>
+							
 							}
-						</div>
+
+	
+					</div>
 						)}
+					{this.props.categorySorted ? this.state.orderedCats:null}
 				
 				<div>add location
 					<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
@@ -137,6 +171,9 @@ class Locations extends Component{
 				</div>
 				<div>
 					<button ref={ref => {this.sort = ref }} onClick={()=>this.handleAlphebatizeClick()}>sort alphabetically</button>
+				</div>
+				<div>
+					<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
 				</div>
 			</div>
 		    	)

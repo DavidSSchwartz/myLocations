@@ -131,4 +131,10 @@ export const addIncomplete=(Boolean)=>{
 		Boolean
 	}
 }
-
+export const categorySorting=(Boolean)=>{
+	return{
+		type:'CATEGORY_SORTING',
+		Boolean
+	}
+}
+categorySorting

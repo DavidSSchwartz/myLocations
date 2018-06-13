@@ -142,3 +142,16 @@ export const AlertAddIncomplete =(state=[], action)=>{
 	}
 	return state
 }
+export const CategorySorted =(state=[], action)=>{
+
+	switch(action.type){
+		case 'CATEGORY_SORTING':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+
