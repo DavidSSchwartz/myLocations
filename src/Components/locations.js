@@ -28,6 +28,7 @@ class Locations extends Component{
 		 		})
 			 }
 	 	}
+
 	}
 	handleEditClick=(i, loc)=>{
 			this.props.editComplete('')
@@ -38,23 +39,45 @@ class Locations extends Component{
 		this.props.editLocationAddress(loc.Address)
 		this.props.editLocationCoordinates(loc.Coordinates)
 	//	this.props.editLocationCategory(loc.Category)
+
+	}
+	handleNameChange=(e, loc)=>{
+		this.props.editLocationName(e.target.value)
 		this.props.catchOldLocVal(loc)
+	}
+	handleAlphebatizeClick=()=>{
+		
+
+		if(this.sort.innerHTML == "unsort" ){
+			const randomOrder= this.props.locations.sort(function(a, b){return 0.5 - Math.random()});
+			this.props.saveLocations(randomOrder)
+			//to make it rerender automatically
+			this.props.editComplete('')
+
+		}
+		else{	
+		 let ABCorder = (this.props.locations.sort(function(a, b){
+						    var x = a.Name.toLowerCase();
+						    var y = b.Name.toLowerCase();
+						    if (x < y) {return -1;}
+						    if (x > y) {return 1;}
+						    return 0;
+						}))
+
+			this.props.saveLocations(ABCorder)
+			//to make it rerender automatically
+			this.props.editComplete(' ')
+
+		}
+		{this.sort.innerHTML=="unsort" ? this.sort.innerHTML= "sort alphabetically" : this.sort.innerHTML= "unsort"}
+
 
 	}
-	handleNameChange=()=>{
 
-	}
-	handleAddressChange=()=>{
-
-	}
-	handleCoordinatesChange=()=>{
-
-	}
-	handleCategoryChange=()=>{
-
-	}
+		
+	
 	render(){
-		console.log(this.props)
+		console.log(this.props.locations)
 		return(
 			<div className="locationsList">
 					{this.props.locations.map((loc,i)=>
@@ -64,7 +87,7 @@ class Locations extends Component{
 							</button>
 							{this.state.edit === i ? 
 								<div>
-									<input placeholder="name" type="text" value={this.props.newLocationName} onChange={(e)=>this.props.editLocationName(e.target.value)}/>
+									<input placeholder="name" type="text" value={this.props.newLocationName} onChange={(e)=>this.handleNameChange(e, loc)}/>
 									<input placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.props.editLocationAddress(e.target.value)}/>
 									<input placeholder="coordinates" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.props.editLocationCoordinates(e.target.value)}/>
 									<select name="locCats" onChange={(e)=>this.props.editLocationCategory(e.target.value)}>
@@ -111,6 +134,9 @@ class Locations extends Component{
 						
 						)}
 					</select>
+				</div>
+				<div>
+					<button ref={ref => {this.sort = ref }} onClick={()=>this.handleAlphebatizeClick()}>sort alphabetically</button>
 				</div>
 			</div>
 		    	)

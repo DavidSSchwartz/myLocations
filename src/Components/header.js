@@ -45,10 +45,7 @@ class Header extends Component{
 
 		//Location Removal
 		let handleLocRemoval = this.props.removedLocation
-	console.log(handleLocRemoval)
 		let newLocArray = this.props.locations.filter(loc => loc.Name !== handleLocRemoval)
-		console.log(handleLocRemoval)
-		console.log(newLocArray)
 		this.props.saveLocations(newLocArray)
 
 			
@@ -78,19 +75,19 @@ class Header extends Component{
 			this.props.saveCats(editedCatArray)
 			this.props.editComplete(-1)
 		}
+
+
 		let currentLoc = this.props.locations.indexOf(this.props.oldLocationValue)
-		console.log(this.props.oldLocationValue)
-		console.log(currentLoc)
-		if(currentLoc > -1){
+			if(currentLoc > -1){
 			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:this.props.newLocationCoordinates, Category:this.props.newLocationCategory})
 
 			let editedLocArray=this.props.locations
 			this.props.saveLocations(editedLocArray)
 			this.props.editComplete(-1)
 		}
-			
+	
 
-		
+	
 	}
 	render(){
 		return(
