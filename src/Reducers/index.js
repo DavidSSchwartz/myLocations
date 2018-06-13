@@ -17,17 +17,23 @@ import {
 	LocationName,
 	LocationAddress,
 	LocationCoordinates,
+	LocationCoordinates2,
 	LocationCategory,
 	RemovedLocation,
 	NewLocationName,
 	NewLocationAddress,
 	NewLocationCoordinates,
+	NewLocationCoordinates2,
 	NewLocationCategory,
 	OldLocationValue,
 	AlertAddIncomplete,
 	CategorySorted,
 	ChoseACatLoc,
-	Properties
+	Properties,
+	NewLoc,
+	Latitude,
+	Longitude,
+	ShowingMap
 }
 from './location';
 
@@ -46,16 +52,22 @@ export const rootReducer = combineReducers({
 	LocationName,
 	LocationAddress,
 	LocationCoordinates,
+	LocationCoordinates2,
 	LocationCategory,
 	RemovedLocation,
 	NewLocationName,
 	NewLocationAddress,
 	NewLocationCoordinates,
+	NewLocationCoordinates2,
 	NewLocationCategory,
 	OldLocationValue,
 	AlertAddIncomplete,
 	CategorySorted,
 	ChoseACatLoc,
 	Properties,
+	NewLoc,
+	Latitude,
+	Longitude,
+	ShowingMap,
 	routing: routerReducer
 });

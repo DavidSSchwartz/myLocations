@@ -28,17 +28,23 @@ const defaultState={
 	LocationName:'',
 	LocationAddress:'',
 	LocationCoordinates:Number,
+	LocationCoordinates2:Number,
 	LocationCategory:'',
 	RemovedLocation:'',
 	NewLocationName:'',
 	NewLocationAddress:'',
 	NewLocationCoordinates:Number,
+	NewLocationCoordinates2:Number,
 	NewLocationCategory:'',
 	OldLocationValue:[],
 	AlertAddIncomplete:Boolean,
 	CategorySorted:Boolean,
 	ChoseACatLoc:Boolean,
-	Properties:''
+	Properties:'',
+	NewLoc:Array,
+	Latitude:Number,
+	Longitude:Number,
+	ShowingMap:''
 };
 
 

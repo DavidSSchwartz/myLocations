@@ -46,6 +46,18 @@ export const LocationCoordinates =(state='', action)=>{
 	}
 	return state
 }
+export const LocationCoordinates2 =(state='', action)=>{
+
+	switch(action.type){
+		case 'CHANGE_LOCATION_COORDINATES2':
+
+			return action.Number
+
+		default:
+			return state;
+	}
+	return state
+}
 export const LocationCategory =(state='', action)=>{
 
 	switch(action.type){
@@ -98,6 +110,18 @@ export const NewLocationCoordinates =(state='', action)=>{
 
 	switch(action.type){
 		case 'EDIT_LOCATION_COORDINATES':
+
+			return action.Number
+
+		default:
+			return state;
+	}
+	return state
+}
+export const NewLocationCoordinates2 =(state='', action)=>{
+
+	switch(action.type){
+		case 'EDIT_LOCATION_COORDINATES2':
 
 			return action.Number
 
@@ -178,4 +202,51 @@ export const Properties =(state=[], action)=>{
 	}
 	return state
 }
+export const NewLoc =(state=[], action)=>{
 
+	switch(action.type){
+		case 'SAVE_NEW_LOCATION':
+
+			return action.location
+
+		default:
+			return state;
+	}
+	return state
+}
+export const Latitude =(state=Number, action)=>{
+
+	switch(action.type){
+		case 'SAVE_LAT':
+
+			return action.latitude
+
+		default:
+			return state;
+	}
+	return state
+}
+export const Longitude =(state=Number, action)=>{
+
+	switch(action.type){
+		case 'SAVE_LONG':
+
+			return action.longitude
+
+		default:
+			return state;
+	}
+	return state
+}
+export const ShowingMap =(state='', action)=>{
+
+	switch(action.type){
+		case 'SHOW_MAP':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}

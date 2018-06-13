@@ -21,17 +21,23 @@ function mapStateToProps(state){
 		locationName:state.LocationName,
 		locationAddress:state.LocationAddress,
 		locationCoordinates:state.LocationCoordinates,
+		locationCoordinates2:state.LocationCoordinates2,
 		locationCategory:state.LocationCategory,
 		removedLocation:state.RemovedLocation,
 		newLocationName:state.NewLocationName,
 		newLocationAddress:state.NewLocationAddress,
 		newLocationCoordinates:state.NewLocationCoordinates,
+		newLocationCoordinates2:state.NewLocationCoordinates2,
 		newLocationCategory:state.NewLocationCategory,
 		oldLocationValue:state.OldLocationValue,
 		alertAddIncomplete:state.AlertAddIncomplete,
 		categorySorted:state.CategorySorted,
 		choseACatLoc:state.ChoseACatLoc,
-		properties:state.Properties
+		properties:state.Properties,
+		newLoc:state.NewLoc,
+		latitude:state.Latitude,
+		longitude:state.Longitude,
+		showingMap:state.ShowingMap
 	
 
 	}

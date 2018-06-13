@@ -22,10 +22,11 @@ class Header extends Component{
 		}
 		if (this.props.locationName !== '' && this.props.locationAddress !== '' && this.props.locationCoordinates !== '' && (this.props.locationCategory !== '' && this.props.locationCategory !== 'category')){
 			
-			let locAdded= this.props.locations.concat([{Name:this.props.locationName, Address:this.props.locationAddress, Coordinates:this.props.locationCoordinates,Category:this.props.locationCategory}])
+			let newLocation = [{Name:this.props.locationName, Address:this.props.locationAddress, Coordinates:{lat:this.props.locationCoordinates,long:this.props.locationCoordinates2},Category:this.props.locationCategory}]
+			let locAdded= this.props.locations.concat(newLocation)
 			
 			this.props.saveLocations(locAdded)
-			
+			//this.props.saveNewLocation(newLocation)
 			console.log(this.props.currentCats)
 			this.props.addIncomplete(false)
 		}
@@ -80,7 +81,7 @@ class Header extends Component{
 		let currentLoc = this.props.locations.indexOf(this.props.oldLocationValue)
 		console.log(this.props.oldLocationValue)
 			if(currentLoc > -1){
-			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:this.props.newLocationCoordinates, Category:this.props.newLocationCategory})
+			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:{lat:this.props.newLocationCoordinates, long:this.props.newLocationCoordinates2}, Category:this.props.newLocationCategory})
 
 			let editedLocArray=this.props.locations
 			this.props.saveLocations(editedLocArray)

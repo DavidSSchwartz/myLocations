@@ -83,6 +83,12 @@ export const changeLocationCoordinates=(Number)=>{
 		Number
 	}
 }
+export const changeLocationCoordinates2=(Number)=>{
+	return{
+		type:'CHANGE_LOCATION_COORDINATES2',
+		Number
+	}
+}
 export const changeLocationCategory=(category)=>{
 	return{
 		type:'CHANGE_LOCATION_CATEGORY',
@@ -110,6 +116,12 @@ export const editLocationAddress=(address)=>{
 export const editLocationCoordinates=(Number)=>{
 	return{
 		type:'EDIT_LOCATION_COORDINATES',
+		Number
+	}
+}
+export const editLocationCoordinates2=(Number)=>{
+	return{
+		type:'EDIT_LOCATION_COORDINATES2',
 		Number
 	}
 }
@@ -147,6 +159,30 @@ export const viewProperties=(value)=>{
 	return{
 		type:'VIEW_PROPERTIES',
 		value
+	}
+}
+export const saveNewLocation=(location)=>{
+	return{
+		type:'SAVE_NEW_LOCATION',
+		location
+	}
+}
+export const saveLat=(latitude)=>{
+	return{
+		type:'SAVE_LAT',
+		latitude
+	}
+}
+export const saveLong=(longitude)=>{
+	return{
+		type:'SAVE_LONG',
+		longitude
+	}
+}
+export const showMap=(Boolean)=>{
+	return{
+		type:'SHOW_MAP',
+		Boolean
 	}
 }
 

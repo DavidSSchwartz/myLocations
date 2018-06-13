@@ -3,8 +3,10 @@ import { Locs } from '../data/locations';
 import style from '../Style/locations.css';
 import { EditLocations } from './Locations/editLocations';
 import { MapCats } from './Locations/mapCats';
-import { MyMapComponent }  from './Locations/Map';
+import GoogleMapsContainer   from './Locations/Map';
 import { ViewProperties } from './Locations/viewProperties';
+import { ViewOnMap } from './Locations/viewOnMap';
+
 class Locations extends Component{
 	constructor(){
 		super()
@@ -43,6 +45,11 @@ class Locations extends Component{
 			 }
 	 	}
 
+	 	if(nextProps.showingMap !== this.props.showingMap){
+	 		this.setState({
+	 			edit:true
+	 		})
+	 	}
 	}
 	handleEditClick=(i, loc)=>{
 			this.props.editComplete('')
@@ -51,8 +58,11 @@ class Locations extends Component{
 		})
 		this.props.editLocationName(loc.Name)
 		this.props.editLocationAddress(loc.Address)
-		this.props.editLocationCoordinates(loc.Coordinates)
+		this.props.editLocationCoordinates(loc.Coordinates.lat)
+		this.props.editLocationCoordinates2(loc.Coordinates.long)
+
 	//	this.props.editLocationCategory(loc.Category)
+				console.log(this.state.edit)
 
 	}
 	
@@ -91,21 +101,39 @@ class Locations extends Component{
 		if(this.catSort.innerHTML == "sort by category" ){
 
 			const orderedCats=(this.props.currentCats.map((cat,i)=>
-											this.props.locations.map((locs,i)=>
-												cat === locs.Category ?<div key={i}>{locs.Category} {locs.Name}</div>:console.log(i)
-										)).sort())
+											this.props.locations.map((locs,ii)=>
+												cat === locs.Category ?    
+												[<button key={locs.Category} onClick={()=>this.handleEditClick(ii, locs)}>
+													edit
+												</button>,
+												this.state.edit === ii ? 
+
+													<EditLocations loc={locs} {...this.props}/>
+
+													:
+													<div key={i}>{locs.Category} {locs.Name}</div>]
+													:null
+												)).sort())
+			//maybe try to incoorporate edit
+
 			this.setState({
 				orderedCats:orderedCats
 			})
+
 			this.props.categorySorting(true)
+			//this.props.saveLocations(this.state.orderedCats)
 			this.setState({
 				locDisplay:'none'
-			})}	
+			})
+				console.log(this.state.orderedCats)
+}	
+
 		else{
 			this.props.categorySorting(false)
 			this.setState({
 				locDisplay:'block'
 			})
+
 		}
 
 
@@ -113,12 +141,12 @@ class Locations extends Component{
 	
 	}
 	handleChooseCatLoc=(e)=>{
-		this.locByCat=(this.props.locations.map((loci, i)=>
+		 const locByCat=(this.props.locations.map((loci, i)=>
 						e === loci.Category ? <div key={i}>{loci.Name}</div>:console.log("loc.Name")
 					))
 		
 		this.setState({
-				locationCategory:this.locByCat
+				locationCategory:locByCat
 			})
 		this.setState({
 				locDisplay:'none'
@@ -138,7 +166,8 @@ class Locations extends Component{
 				nameClicked:true,
 				locName:locN,
 				locAddr:locA,
-				locCoord:locCo,
+				locLat:locCo.lat,
+				locLong:locCo.long,
 				locCat:locCa,
 				locDisplay:'none'
 			})
@@ -153,7 +182,7 @@ class Locations extends Component{
 	
 
 	render(){
-		console.log(this.props.locations)
+		console.log('renderinf')
 		return(
 			<div  className="locationsList">
 					{this.props.locations.map((loc,i)=>
@@ -169,9 +198,6 @@ class Locations extends Component{
 
 								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
 									<div className='locationName' onClick={()=> this.handleNameClick(loc.Name, loc.Address, loc.Coordinates, loc.Category) }>{loc.Name}</div>
-									<div className='locationDetail'>{loc.Address}</div>
-									<div className='locationDetail'>{loc.Coordinates}</div>
-									<div className='locationDetail'>{loc.Category}</div>
 								</div>
 								
 							
@@ -185,16 +211,18 @@ class Locations extends Component{
 							{this.state.locName} 
 							<div style={{display:this.props.properties}}>
 								<div className='locationDetail'>{this.state.locAddr} </div>
-								<div className='locationDetail'>{this.state.locCoord} </div>
+								<div className='locationDetail'>{this.state.locLat + ", " + this.state.locLong} </div>
 								<div className='locationDetail'>{this.state.locCat}  </div>
 							</div>
+							
 							<ViewProperties {...this.props}/>
-							<button className="showOption" >
-								View on Map
-							</button> 
+							
+							<ViewOnMap lat={this.state.locLat} long={this.state.locLong} {...this.props} />
+							
 							<button onClick={()=>this.handleBackClick()}>
 							back to locations
 							</button>
+
 						</div>
 					}
 					{this.props.categorySorted && this.state.orderedCats}
@@ -203,7 +231,8 @@ class Locations extends Component{
 				<div>add location
 					<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
 					<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
-					<input placeholder="coordinates" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
+					<input placeholder="latitue" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
+					<input placeholder="longitude" type="text" value={this.props.locationCoordinates2} onChange={(e)=>this.props.changeLocationCoordinates2(e.target.value)}/>
 					<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
 						<option selected='selected'>category</option>
 						<MapCats {...this.props}/>
@@ -237,13 +266,7 @@ class Locations extends Component{
 
 				</div>
 				<div>
-				<MyMapComponent
-				  isMarkerShown
-				  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-				  loadingElement={<div style={{ height: `100%` }} />}
-				  containerElement={<div style={{ height: `400px` }} />}
-				  mapElement={<div style={{ height: `100%` }} />}
-				/>
+				{this.props.showingMap && <GoogleMapsContainer/> }
 				</div>
 			</div>
 		    	)

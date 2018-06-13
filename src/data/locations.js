@@ -76,14 +76,14 @@
 
 
 
-const location1= {"Name":"Petach Tikva", "Address":"23 Charlop St","Coordinates": 53332423, "Category":"Housing"}
-const location2= {"Name":"Jerusalem", "Address":"1 HaGra St", "Coordinates":433232332342, "Category":"Food"}
-const location3= {"Name":"Haifi", "Address":"165 Shefa St","Coordinates": 343121123124, "Category":"Industrial"}
-const location4= {"Name":"Modiin" ,"Address": "89 Ovadia Sq","Coordinates": 54643765756, "Category":"Famous Site"}
-const location5= {"Name":"Netanya",  "Address":"18 HaYarkon St","Coordinates": 324342424, "Category":"View"}
-const location6= {"Name":"Tzfat",  "Address":"45 HaAri St","Coordinates":10000293332211, "Category":"Shopping"}
-const location7= {"Name":"Meron",  "Address":"68 Rashbi St","Coordinates":483798237598326, "Category":"Famous Site"}
-const location8= {"Name":"Golan",  "Address":"980 HaKablan St","Coordinates":43825657823, "Category":"View"}
+const location1= {"Name":"Petach Tikva", "Address":"20-26 Tzahal St","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"Housing"}
+const location2= {"Name":"Jerusalem", "Address":"1 HaGra St", "Coordinates":{"lat":32.088633 , "long":34.870859}, "Category":"Food"}
+const location3= {"Name":"Haifi", "Address":"165 Shefa St","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"Industrial"}
+const location4= {"Name":"Modiin" ,"Address": "89 Ovadia Sq","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"Famous Site"}
+const location5= {"Name":"Netanya",  "Address":"18 HaYarkon St","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"View"}
+const location6= {"Name":"Tzfat",  "Address":"45 HaAri St","Coordinates":{"lat":32.088633 , "long":34.870859}, "Category":"Shopping"}
+const location7= {"Name":"Meron",  "Address":"68 Rashbi St","Coordinates":{"lat":32.088633 , "long":34.870859}, "Category":"Famous Site"}
+const location8= {"Name":"Golan",  "Address":"980 HaKablan St","Coordinates":{"lat":32.088633 , "long":34.870859}, "Category":"View"}
 localStorage.setItem('Location1',JSON.stringify(location1))
 localStorage.setItem('Location2',JSON.stringify(location2))
 localStorage.setItem('Location3',JSON.stringify(location3))
