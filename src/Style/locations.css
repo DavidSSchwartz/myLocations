@@ -2,10 +2,12 @@
 
 }
 .locationInfo{
-	display:flex;
 }
 .locationName{
 	cursor:pointer;
 }
 .locationDetail{
+}
+.allLocationInfo{
+	display:flex;
 }

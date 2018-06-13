@@ -185,4 +185,11 @@ export const showMap=(Boolean)=>{
 		Boolean
 	}
 }
+export const adding=(Boolean)=>{
+	return{
+		type:'ADDING',
+		Boolean
+	}
+}
+
 

@@ -250,3 +250,15 @@ export const ShowingMap =(state='', action)=>{
 	}
 	return state
 }
+export const ToAdd =(state='', action)=>{
+
+	switch(action.type){
+		case 'ADDING':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}

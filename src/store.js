@@ -44,7 +44,8 @@ const defaultState={
 	NewLoc:Array,
 	Latitude:Number,
 	Longitude:Number,
-	ShowingMap:''
+	ShowingMap:'',
+	ToAdd:Boolean
 };
 
 

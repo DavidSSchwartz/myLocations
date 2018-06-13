@@ -6,7 +6,7 @@ import { MapCats } from './Locations/mapCats';
 import GoogleMapsContainer   from './Locations/Map';
 import { ViewProperties } from './Locations/viewProperties';
 import { ViewOnMap } from './Locations/viewOnMap';
-
+import '../Style/categories.css'
 class Locations extends Component{
 	constructor(){
 		super()
@@ -29,6 +29,7 @@ class Locations extends Component{
 		this.props.categorySorting(false)
 		this.props.chooseACatLoc(false)
 		this.props.viewProperties('none')
+		this.props.adding(false)
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -165,7 +166,7 @@ class Locations extends Component{
 				locCat:locCa,
 				locDisplay:'none'
 			})
-			
+
 
 	}
 	handleBackClick=()=>{
@@ -174,16 +175,21 @@ class Locations extends Component{
 				locDisplay:'block'
 			})
 	}
-	
+	addClick=()=>{
+		
+		this.props.adding(true)
 
+	}
 	render(){
-		console.log('renderinf')
+		console.log(this.props.toAdd)
 		return(
-			<div  className="locationsList">
+			<div  className="allLocationInfo">
+					<div className="locationsList">
 					{this.props.locations.map((loc,i)=>
+					
 						<div style={{display:this.state.locDisplay}} className="locationInfo" key={i}>
-							<button onClick={()=>this.handleEditClick(i, loc)}>
-								edit
+							<button className="editButton" onClick={()=>this.handleEditClick(i, loc)}>
+									<i className="fas fa-edit editedit"></i>
 							</button>
 							{this.state.edit === i ? 
 
@@ -199,8 +205,10 @@ class Locations extends Component{
 							}
 
 	
-					</div>
+						</div>
+					
 						)}
+					</div>
 					{this.state.nameClicked && 
 						<div> 
 							{this.state.locName} 
@@ -223,15 +231,20 @@ class Locations extends Component{
 					{this.props.categorySorted && this.state.orderedCats}
 					{this.props.choseACatLoc &&  this.state.locationCategory}
 				
-				<div>add location
-					<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
-					<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
-					<input placeholder="latitue" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
-					<input placeholder="longitude" type="text" value={this.props.locationCoordinates2} onChange={(e)=>this.props.changeLocationCoordinates2(e.target.value)}/>
-					<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
-						<option selected='selected'>category</option>
-						<MapCats {...this.props}/>
-					</select>
+				<div>
+					<button onClick={()=>this.addClick()}> Add location</button>
+					{this.props.toAdd &&
+						<div>
+							<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
+							<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
+							<input placeholder="latitude" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
+							<input placeholder="longitude" type="text" value={this.props.locationCoordinates2} onChange={(e)=>this.props.changeLocationCoordinates2(e.target.value)}/>
+							<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
+								<option selected='selected'>category</option>
+								<MapCats {...this.props}/>
+							</select>
+						</div>
+					}
 				</div>
 				{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
 				<div>remove location

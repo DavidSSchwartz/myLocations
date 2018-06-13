@@ -17,8 +17,8 @@ class Header extends Component{
 			let catAdded= this.props.currentCats.concat(this.props.categoryValue)
 			
 			this.props.saveCats(catAdded)
-			
 			console.log(this.props.currentCats)
+
 			
 		}
 		if (this.props.locationName !== '' && this.props.locationAddress !== '' && this.props.locationCoordinates !== '' && (this.props.locationCategory !== '' && this.props.locationCategory !== 'category')){
@@ -30,6 +30,8 @@ class Header extends Component{
 			//this.props.saveNewLocation(newLocation)
 			console.log(this.props.currentCats)
 			this.props.addIncomplete(false)
+			this.props.adding(false)
+
 		}
 		else{
 			this.props.addIncomplete(true)

@@ -1,4 +1,4 @@
-.listCats{
+.listCats, .locationInfo{
     display: flex;
     
      padding: 3%;
@@ -15,7 +15,7 @@
 .theEditBox{
     font-size: 1.7em;
 }
-.theCategory{
+.theCategory, .locationName{
     color: whitesmoke;
     text-shadow: 1px 1px 1px black;
    font-size:  2em;;

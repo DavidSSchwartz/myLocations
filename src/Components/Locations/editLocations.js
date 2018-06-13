@@ -35,10 +35,10 @@ export class EditLocations extends Component{
 		return(
 
 				<div className="editDiv">
-					<input placeholder="name" type="text" value={this.props.newLocationName} onChange={(e)=>this.handleNameChange(e, loc.loc)}/>
-					<input placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.handleAddressChange(e, loc.loc)}/>
-					<input placeholder="latitue" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.handleCoordinatesChange(e, loc.loc)}/>
-					<input placeholder="longitude" type="text" value={this.props.newLocationCoordinates2} onChange={(e)=>this.handleCoordinatesChange2(e, loc.loc)}/>
+					<input className="theEditBox" placeholder="name" type="text" value={this.props.newLocationName} onChange={(e)=>this.handleNameChange(e, loc.loc)}/>
+					<input className="theEditBox" placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.handleAddressChange(e, loc.loc)}/>
+					<input className="theEditBox" placeholder="latitue" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.handleCoordinatesChange(e, loc.loc)}/>
+					<input className="theEditBox" placeholder="longitude" type="text" value={this.props.newLocationCoordinates2} onChange={(e)=>this.handleCoordinatesChange2(e, loc.loc)}/>
 					<select name="locCats" onChange={(e)=>this.handleCategoryChange(e, loc.loc)}>
 						<option selected='selected'>{loc.loc.Category}</option>
 						<MapCats {...this.props} />
