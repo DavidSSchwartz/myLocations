@@ -154,4 +154,16 @@ export const CategorySorted =(state=[], action)=>{
 	}
 	return state
 }
+export const ChoseACatLoc =(state=[], action)=>{
+
+	switch(action.type){
+		case 'CHOOSE_A_CAT_LOC':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
 

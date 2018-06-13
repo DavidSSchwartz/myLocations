@@ -25,7 +25,8 @@ import {
 	NewLocationCategory,
 	OldLocationValue,
 	AlertAddIncomplete,
-	CategorySorted
+	CategorySorted,
+	ChoseACatLoc
 }
 from './location';
 
@@ -53,5 +54,6 @@ export const rootReducer = combineReducers({
 	OldLocationValue,
 	AlertAddIncomplete,
 	CategorySorted,
+	ChoseACatLoc,
 	routing: routerReducer
 });

@@ -9,7 +9,8 @@ class Locations extends Component{
 		this.state={
 			edit:false,
 			state:'',
-			locDisplay:'block'
+			locDisplay:'block',
+			locationCategory:''
 		}
 	}
 	componentWillMount(){
@@ -17,6 +18,8 @@ class Locations extends Component{
 		this.props.saveLocations(Locs)
 		this.props.addIncomplete(false)
 		this.props.categorySorting(false)
+		this.props.chooseACatLoc(false)
+
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -80,12 +83,12 @@ class Locations extends Component{
 	
 		if(this.catSort.innerHTML == "sort by category" ){
 
-			this.orderedCats=(this.props.currentCats.map((cat,i)=>
+			const orderedCats=(this.props.currentCats.map((cat,i)=>
 											this.props.locations.map((locs,i)=>
 												cat === locs.Category ?<div key={i}>{locs.Category} {locs.Name}</div>:console.log(i)
 										)).sort())
 			this.setState({
-				orderedCats:this.orderedCats
+				orderedCats:orderedCats
 			})
 			this.props.categorySorting(true)
 			this.setState({
@@ -102,6 +105,27 @@ class Locations extends Component{
 		{this.catSort.innerHTML=="unsort" ? this.catSort.innerHTML= "sort by category" : this.catSort.innerHTML= "unsort"}
 	
 	}
+	handleChooseCatLoc=(e)=>{
+		this.locByCat=(this.props.locations.map((loci, i)=>
+						e === loci.Category ? <div key={i}>{loci.Name}</div>:console.log("loc.Name")
+					))
+		
+		this.setState({
+				locationCategory:this.locByCat
+			})
+		this.setState({
+				locDisplay:'none'
+			})
+		this.props.chooseACatLoc(true)
+		console.log(this.state.locationCategory)
+
+	}
+	handleButton=()=>{
+			this.props.chooseACatLoc(false)
+			this.setState({
+				locDisplay:'block'
+			})
+		}
 	
 	render(){
 		console.log(this.props.locations)
@@ -130,7 +154,8 @@ class Locations extends Component{
 	
 					</div>
 						)}
-					{this.props.categorySorted ? this.state.orderedCats:null}
+					{this.props.categorySorted && this.state.orderedCats}
+					{this.props.choseACatLoc &&  this.state.locationCategory}
 				
 				<div>add location
 					<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
@@ -161,10 +186,11 @@ class Locations extends Component{
 					<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
 				</div>
 				<div> view locations of specific category
-					<select>
+					<select name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
 						<option selected="selected">category</option>
 						<MapCats {...this.props} />
 					</select>
+					<button onClick={()=>this.handleButton()}>undo</button>
 
 				</div>
 			</div>

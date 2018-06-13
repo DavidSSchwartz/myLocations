@@ -36,7 +36,8 @@ const defaultState={
 	NewLocationCategory:'',
 	OldLocationValue:[],
 	AlertAddIncomplete:Boolean,
-	CategorySorted:Boolean
+	CategorySorted:Boolean,
+	ChoseACatLoc:Boolean
 };
 
 

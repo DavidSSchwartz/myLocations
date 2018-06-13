@@ -137,4 +137,9 @@ export const categorySorting=(Boolean)=>{
 		Boolean
 	}
 }
-categorySorting
+export const chooseACatLoc=(Boolean)=>{
+	return{
+		type:'CHOOSE_A_CAT_LOC',
+		Boolean
+	}
+}
