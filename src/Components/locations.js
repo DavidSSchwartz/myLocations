@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Locs } from '../data/locations';
 import style from '../Style/locations.css';
-
+import { EditLocations } from './Locations/editLocations';
+import { MapCats } from './Locations/mapCats';
 class Locations extends Component{
 	constructor(){
 		super()
@@ -44,10 +45,7 @@ class Locations extends Component{
 	//	this.props.editLocationCategory(loc.Category)
 
 	}
-	handleNameChange=(e, loc)=>{
-		this.props.editLocationName(e.target.value)
-		this.props.catchOldLocVal(loc)
-	}
+	
 	handleAlphebatizeClick=()=>{
 		
 
@@ -115,19 +113,9 @@ class Locations extends Component{
 								edit
 							</button>
 							{this.state.edit === i ? 
-								<div>
-									<input placeholder="name" type="text" value={this.props.newLocationName} onChange={(e)=>this.handleNameChange(e, loc)}/>
-									<input placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.props.editLocationAddress(e.target.value)}/>
-									<input placeholder="coordinates" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.props.editLocationCoordinates(e.target.value)}/>
-									<select name="locCats" onChange={(e)=>this.props.editLocationCategory(e.target.value)}>
-										<option selected='selected'>{loc.Category}</option>
-										 {this.props.currentCats.map((cat, i)=>
-													<option value ={cat} key={i} >
-														{cat}
-													</option>
-										)}
-									</select> 
-								</div>
+
+								<EditLocations loc={loc} {...this.props}/>
+
 								:
 
 								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
@@ -149,11 +137,8 @@ class Locations extends Component{
 					<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
 					<input placeholder="coordinates" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
 					<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
-					<option selected='selected'>category</option>
-					 {this.props.currentCats.map((cat, i)=>
-								<option value ={cat} key={i} >
-									{cat}
-								</option>)}
+						<option selected='selected'>category</option>
+						<MapCats {...this.props}/>
 					</select>
 				</div>
 				{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
@@ -174,6 +159,13 @@ class Locations extends Component{
 				</div>
 				<div>
 					<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
+				</div>
+				<div> view locations of specific category
+					<select>
+						<option selected="selected">category</option>
+						<MapCats {...this.props} />
+					</select>
+
 				</div>
 			</div>
 		    	)

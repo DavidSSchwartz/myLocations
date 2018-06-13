@@ -78,6 +78,7 @@ class Header extends Component{
 
 
 		let currentLoc = this.props.locations.indexOf(this.props.oldLocationValue)
+		console.log(this.props.oldLocationValue)
 			if(currentLoc > -1){
 			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:this.props.newLocationCoordinates, Category:this.props.newLocationCategory})
 
