@@ -87,7 +87,9 @@ class Locations extends Component{
 			this.props.editComplete(' ')
 
 		}
+		//change text on tooltip
 		{this.sort.innerHTML=="unsort" ? this.sort.innerHTML= "sort alphabetically" : this.sort.innerHTML= "unsort"}
+		//change background-color on button
 		{this.sort.innerHTML=="unsort" ? this.sortbtn.style.backgroundColor= "#e0b024" : this.sortbtn.style.backgroundColor= "#fdd247"}
 
 	}
@@ -99,16 +101,8 @@ class Locations extends Component{
 
 			const orderedCats=(this.props.currentCats.map((cat,i)=>
 											this.props.locations.map((locs,ii)=>
-												cat === locs.Category ?    
-												[<button key={locs.Category} onClick={()=>this.handleEditClick(ii, locs)}>
-													edit
-												</button>,
-												this.state.edit === ii ? 
-
-													<EditLocations loc={locs} {...this.props}/>
-
-													:
-													<div key={i}>{locs.Category} {locs.Name}</div>]
+												cat === locs.Category ?    									
+														<div className="locationName orderedLoc" key={i}>  {locs.Name}<span className="orderedCat">{locs.Category}</span> </div>
 													:null
 												)).sort())
 			//maybe try to incoorporate edit
@@ -133,8 +127,10 @@ class Locations extends Component{
 
 		}
 
-
+		//change text on tooltip
 		{this.catSort.innerHTML=="unsort" ? this.catSort.innerHTML= "sort by category" : this.catSort.innerHTML= "unsort"}
+		//change background-color on button
+		{this.catSort.innerHTML=="unsort" ? this.catSortBtn.style.backgroundColor= "#e0b024" : this.catSortBtn.style.backgroundColor= "#fdd247"}
 
 	
 	}
@@ -200,7 +196,7 @@ class Locations extends Component{
 
 								:
 
-								<div  ref={ref => {this.locationsOriginal = ref }}className="locationInfo">
+								<div  ref={ref => {this.locationsOriginal = ref }}className="">
 									<div className='locationName' onClick={()=> this.handleNameClick(loc.Name, loc.Address, loc.Coordinates, loc.Category) }>{loc.Name}</div>
 								</div>
 								
@@ -211,11 +207,9 @@ class Locations extends Component{
 						</div>
 					
 						)}
-					</div>
-					<div className="allOtherFeatures">
-						{this.state.nameClicked && 
+					{this.state.nameClicked && 
 							<div> 
-								{this.state.locName} 
+								<div className="locationName">{this.state.locName} </div>
 								<div style={{display:this.props.properties}}>
 									<div className='locationDetail'>{this.state.locAddr} </div>
 									<div className='locationDetail'>{this.state.locLat + ", " + this.state.locLong} </div>
@@ -234,8 +228,12 @@ class Locations extends Component{
 						}
 						{this.props.categorySorted && this.state.orderedCats}
 						{this.props.choseACatLoc &&  this.state.locationCategory}
+					</div>
+
 					
-					<div className="fullAddDiv">
+					<div className="allOtherFeatures">
+						
+					<div className="fullPropertyDiv">
 						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i>
 						{this.props.toAdd &&
 
@@ -247,7 +245,7 @@ class Locations extends Component{
 						}
 					</div>
 					
-					<div>
+					<div className="fullPropertyDiv">
 						<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
 						<option value="selected" selected="selected">Remove location</option>
 						{this.props.locations.map((loc,i)=>
@@ -260,13 +258,13 @@ class Locations extends Component{
 							)}
 						</select>
 					</div>
-					<div>
-						<button className="sortABCbtn" ref={ref => {this.sortbtn = ref }} onClick={()=>this.handleAlphebatizeClick()}><i className="fas fa-sort-alpha-down"></i><span ref={ref => {this.sort = ref }} className="tooltip tt2">sort alphabetically</span></button>
+					<div className="fullPropertyDiv">
+						<button className="sortBtn" ref={ref => {this.sortbtn = ref }} onClick={()=>this.handleAlphebatizeClick()}><i className="fas fa-sort-alpha-down"></i><span ref={ref => {this.sort = ref }} className="tooltip tt2">sort alphabetically</span></button>
 					</div>
-					<div>
-						<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
+					<div className="fullPropertyDiv">
+						<button className="sortBtn"ref={ref => {this.catSortBtn = ref }} onClick={()=>this.handleCategorySort()}><i className="fas fa-clipboard-list"></i><span ref={ref => {this.catSort = ref }} className="tooltip tt2">sort by category</span></button>
 					</div>
-					<div> view locations of specific category
+					<div className="fullPropertyDiv"> view locations of specific category
 						<select name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
 							<option selected="selected">category</option>
 							<MapCats {...this.props} />

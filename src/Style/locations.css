@@ -2,6 +2,8 @@
 
 }
 .locationInfo{
+	display:flex;
+	    width: min-content;
 }
 .locationName{
 	cursor:pointer;
@@ -53,21 +55,29 @@
     transition: opacity 1s;
     white-space: normal;
  }
- .fullAddDiv{
+ .fullPropertyDiv{
  	padding:10px;
  }
- .sortABCbtn{
+ .sortBtn{
  	background-color: #fdd247;
     border-radius: 18px;
     min-width: 48px;
     min-height: 48px;
  }
- .sortABCbtn:hover .tooltip{
+ .sortBtn:hover .tooltip{
  	opacity: 1;
  }
- .fa-sort-alpha-down{
- 	font-size: 1.6em;
+ .fa-sort-alpha-down, .fa-clipboard-list{
+ 	font-size: 1.7em;
  }
  .tt2{
  	 margin-top: 20px;
  }
+.orderedLoc{
+	display:flex;
+}
+.orderedCat{
+	margin:0 10px;
+	    color: orange;
+    font-size: .5em;
+}
