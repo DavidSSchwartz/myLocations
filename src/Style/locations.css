@@ -67,7 +67,7 @@
  .sortBtn:hover .tooltip{
  	opacity: 1;
  }
- .fa-sort-alpha-down, .fa-clipboard-list{
+ .fa-sort-alpha-down, .fa-clipboard-list, .plus-circle{
  	font-size: 1.7em;
  }
  .tt2{
@@ -80,4 +80,13 @@
 	margin:0 10px;
 	    color: orange;
     font-size: .5em;
+}
+.chosenCatLoc{
+	margin:15px;
+}
+.chooseCat:hover .tooltip{
+	opacity: 1;
+}
+.tt3{
+	margin-left:-110px;
 }

@@ -21,7 +21,8 @@ class Locations extends Component{
 			locName:'',
 			locAddr:'',
 			locCoord:Number,
-			locCat:''
+			locCat:'',
+			locDisplay2:'block'
 		}
 	}
 	componentWillMount(){
@@ -102,7 +103,7 @@ class Locations extends Component{
 			const orderedCats=(this.props.currentCats.map((cat,i)=>
 											this.props.locations.map((locs,ii)=>
 												cat === locs.Category ?    									
-														<div className="locationName orderedLoc" key={i}>  {locs.Name}<span className="orderedCat">{locs.Category}</span> </div>
+														<div className="locationName orderedLoc" style={{display:this.state.locDisplay2}} key={ii}>  {locs.Name}<span className="orderedCat">{locs.Category}</span> </div>
 													:null
 												)).sort())
 			//maybe try to incoorporate edit
@@ -110,12 +111,16 @@ class Locations extends Component{
 			this.setState({
 				orderedCats:orderedCats
 			})
+			this.setState({
+				locationCategory:''
+			})
 
 			this.props.categorySorting(true)
 			//this.props.saveLocations(this.state.orderedCats)
 			this.setState({
 				locDisplay:'none'
 			})
+			
 				console.log(this.state.orderedCats)
 }	
 
@@ -124,6 +129,7 @@ class Locations extends Component{
 			this.setState({
 				locDisplay:'block'
 			})
+			
 
 		}
 
@@ -135,16 +141,22 @@ class Locations extends Component{
 	
 	}
 	handleChooseCatLoc=(e)=>{
-		 const locByCat=(this.props.locations.map((loci, i)=>
-						e === loci.Category ? <div key={i}>{loci.Name}</div>:console.log("loc.Name")
-					))
 		
+		 const locByCat=(this.props.locations.map((loci, i)=>
+						e === loci.Category ? <div className="locationName chosenCatLoc" key={i}>
+												{loci.Name}
+												</div>:null
+					))
+		this.setState({
+			orderedCats:''
+		})
 		this.setState({
 				locationCategory:locByCat
 			})
 		this.setState({
 				locDisplay:'none'
 			})
+	
 		this.props.chooseACatLoc(true)
 		console.log(this.state.locationCategory)
 
@@ -180,7 +192,7 @@ class Locations extends Component{
 
 	}
 	render(){
-		console.log(this.props.toAdd)
+		console.log(this.state.orderedCats)
 		return(
 			<div  className="allLocationInfo">
 					<div className="locationsList">
@@ -234,7 +246,7 @@ class Locations extends Component{
 					<div className="allOtherFeatures">
 						
 					<div className="fullPropertyDiv">
-						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i>
+						<button className="sortBtn"><i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i></button>
 						{this.props.toAdd &&
 
 							<AddCat {...this.props} />
@@ -264,12 +276,17 @@ class Locations extends Component{
 					<div className="fullPropertyDiv">
 						<button className="sortBtn"ref={ref => {this.catSortBtn = ref }} onClick={()=>this.handleCategorySort()}><i className="fas fa-clipboard-list"></i><span ref={ref => {this.catSort = ref }} className="tooltip tt2">sort by category</span></button>
 					</div>
-					<div className="fullPropertyDiv"> view locations of specific category
-						<select name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
-							<option selected="selected">category</option>
+					<div className="fullPropertyDiv"> 
+						<div className="chooseCat">
+							<select  name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
+							
+							<option selected="selected">Choose category</option>
 							<MapCats {...this.props} />
-						</select>
-						<button onClick={()=>this.handleButton()}>undo</button>
+							</select>
+							<span className='tooltip tt2 tt3'>View locations of a specific category</span>
+							<button onClick={()=>this.handleButton()}>undo</button>
+						</div>
+						
 
 					</div>
 					<div>
