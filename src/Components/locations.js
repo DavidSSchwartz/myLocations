@@ -33,6 +33,7 @@ class Locations extends Component{
 		this.props.chooseACatLoc(false)
 		this.props.viewProperties('none')
 		this.props.adding(false)
+		this.props.removing(false)
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -191,6 +192,9 @@ class Locations extends Component{
 		this.props.adding(true)
 
 	}
+	removeClick=()=>{
+		this.props.removing(true)
+	}
 	render(){
 		console.log(this.state.orderedCats)
 		return(
@@ -220,9 +224,9 @@ class Locations extends Component{
 					
 						)}
 					{this.state.nameClicked && 
-							<div> 
+							<div > 
 								<div className="locationName">{this.state.locName} </div>
-								<div style={{display:this.props.properties}}>
+								<div className="locationName" style={{display:this.props.properties}}>
 									<div className='locationDetail'>{this.state.locAddr} </div>
 									<div className='locationDetail'>{this.state.locLat + ", " + this.state.locLong} </div>
 									<div className='locationDetail'>{this.state.locCat}  </div>
@@ -258,17 +262,22 @@ class Locations extends Component{
 					</div>
 					
 					<div className="fullPropertyDiv">
-						<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
-						<option value="selected" selected="selected">Remove location</option>
-						{this.props.locations.map((loc,i)=>
-							<option value={loc.Name} key={i}>
-								{loc.Name}
-							</option>
-
-
+						
+						<button className="sortBtn"><i className="fas fa-minus-circle" onClick={()=>this.removeClick()}><span className='tooltip'>remove category</span> </i> </button>
 							
-							)}
-						</select>
+						{this.props.toRemove ?
+							<select className="removeLoca" name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
+								<option value="selected" selected="selected">Remove location</option>
+								{this.props.locations.map((loc,i)=>
+									<option value={loc.Name} key={i}>
+										{loc.Name}
+									</option>
+
+
+								
+								)}
+							</select>: null
+						}
 					</div>
 					<div className="fullPropertyDiv">
 						<button className="sortBtn" ref={ref => {this.sortbtn = ref }} onClick={()=>this.handleAlphebatizeClick()}><i className="fas fa-sort-alpha-down"></i><span ref={ref => {this.sort = ref }} className="tooltip tt2">sort alphabetically</span></button>
@@ -278,19 +287,19 @@ class Locations extends Component{
 					</div>
 					<div className="fullPropertyDiv"> 
 						<div className="chooseCat">
-							<select  name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
+							<select  className="choseCat" name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
 							
 							<option selected="selected">Choose category</option>
 							<MapCats {...this.props} />
 							</select>
 							<span className='tooltip tt2 tt3'>View locations of a specific category</span>
-							<button onClick={()=>this.handleButton()}>undo</button>
+							<button className="choseCat" onClick={()=>this.handleButton()}>undo</button>
 						</div>
 						
 
 					</div>
 					<div>
-					{this.props.showingMap && <GoogleMapsContainer/> }
+					{this.props.showingMap && <GoogleMapsContainer {...this.props}/> }
 					</div>
 				</div>
 		    </div>

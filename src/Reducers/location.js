@@ -262,3 +262,15 @@ export const ToAdd =(state='', action)=>{
 	}
 	return state
 }
+export const ToRemove =(state='', action)=>{
+
+	switch(action.type){
+		case 'REMOVING':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}

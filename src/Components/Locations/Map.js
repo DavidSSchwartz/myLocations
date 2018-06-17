@@ -106,6 +106,7 @@ class GoogleMapsContainer extends React.Component {
       'marginLeft': 'auto',
       'marginRight': 'auto'
     }
+    console.log(this.props.longitude)
     return (
       <Map
         item

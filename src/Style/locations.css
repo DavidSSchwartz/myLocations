@@ -4,9 +4,11 @@
 .locationInfo{
 	display:flex;
 	    width: min-content;
+	    padding: 10px;
 }
 .locationName{
 	cursor:pointer;
+	padding:10px;
 }
 .locationDetail{
 }
@@ -87,6 +89,10 @@
 .chooseCat:hover .tooltip{
 	opacity: 1;
 }
+
 .tt3{
 	margin-left:-110px;
+}
+.removeLoca, .choseCat{
+	font-size:1.4em;
 }

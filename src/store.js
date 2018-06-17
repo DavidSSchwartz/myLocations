@@ -45,7 +45,8 @@ const defaultState={
 	Latitude:Number,
 	Longitude:Number,
 	ShowingMap:'',
-	ToAdd:Boolean
+	ToAdd:Boolean,
+	ToRemove:Boolean
 };
 
 

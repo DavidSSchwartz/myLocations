@@ -57,6 +57,7 @@ class Header extends Component{
 		let handleLocRemoval = this.props.removedLocation
 		let newLocArray = this.props.locations.filter(loc => loc.Name !== handleLocRemoval)
 		this.props.saveLocations(newLocArray)
+		this.props.removing(false)
 
 			
 	}

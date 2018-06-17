@@ -34,7 +34,8 @@ import {
 	Latitude,
 	Longitude,
 	ShowingMap,
-	ToAdd
+	ToAdd,
+	ToRemove
 }
 from './location';
 
@@ -71,5 +72,6 @@ export const rootReducer = combineReducers({
 	Longitude,
 	ShowingMap,
 	ToAdd,
+	ToRemove,
 	routing: routerReducer
 });

@@ -38,7 +38,8 @@ function mapStateToProps(state){
 		latitude:state.Latitude,
 		longitude:state.Longitude,
 		showingMap:state.ShowingMap,
-		toAdd:state.ToAdd
+		toAdd:state.ToAdd,
+		toRemove:state.ToRemove
 	
 
 	}

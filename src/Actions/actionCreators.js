@@ -191,5 +191,10 @@ export const adding=(Boolean)=>{
 		Boolean
 	}
 }
-
+export const removing=(Boolean)=>{
+	return{
+		type:'REMOVING',
+		Boolean
+	}
+}
 
