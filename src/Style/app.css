@@ -1,10 +1,7 @@
 .wholeApp{
 	display:flex;
 	flex-direction: column;
-	background:
-    radial-gradient(
-      #067faa, #4aa4c0
-    );
+	
 }
 .footer{
     height: 12%;
@@ -43,6 +40,9 @@ body{
 	margin:0;
 	box-sizing: border-box;
 	font-family: sans-serif;
-	background-color:  #4aa4c0;
+	background:
+    radial-gradient(
+      #067faa, #4aa4c0
+    );
 	
 }

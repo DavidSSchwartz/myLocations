@@ -7,6 +7,8 @@ import GoogleMapsContainer   from './Locations/Map';
 import { ViewProperties } from './Locations/viewProperties';
 import { ViewOnMap } from './Locations/viewOnMap';
 import '../Style/categories.css'
+import { AddCat } from './Locations/addCat';
+
 class Locations extends Component{
 	constructor(){
 		super()
@@ -209,74 +211,67 @@ class Locations extends Component{
 					
 						)}
 					</div>
-					{this.state.nameClicked && 
-						<div> 
-							{this.state.locName} 
-							<div style={{display:this.props.properties}}>
-								<div className='locationDetail'>{this.state.locAddr} </div>
-								<div className='locationDetail'>{this.state.locLat + ", " + this.state.locLong} </div>
-								<div className='locationDetail'>{this.state.locCat}  </div>
+					<div className="allOtherFeautures">
+						{this.state.nameClicked && 
+							<div> 
+								{this.state.locName} 
+								<div style={{display:this.props.properties}}>
+									<div className='locationDetail'>{this.state.locAddr} </div>
+									<div className='locationDetail'>{this.state.locLat + ", " + this.state.locLong} </div>
+									<div className='locationDetail'>{this.state.locCat}  </div>
+								</div>
+								
+								<ViewProperties {...this.props}/>
+								
+								<ViewOnMap lat={this.state.locLat} long={this.state.locLong} {...this.props} />
+								
+								<button onClick={()=>this.handleBackClick()}>
+								back to locations
+								</button>
+
 							</div>
-							
-							<ViewProperties {...this.props}/>
-							
-							<ViewOnMap lat={this.state.locLat} long={this.state.locLong} {...this.props} />
-							
-							<button onClick={()=>this.handleBackClick()}>
-							back to locations
-							</button>
+						}
+						{this.props.categorySorted && this.state.orderedCats}
+						{this.props.choseACatLoc &&  this.state.locationCategory}
+					
+					<div>
+						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}>   </i>
+						{this.props.toAdd &&
+							<AddCat {...this.props} />
+						}
+					</div>
+					{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
+					<div>
+						<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
+						<option value="selected" selected="selected">Remove location</option>
+						{this.props.locations.map((loc,i)=>
+							<option value={loc.Name} key={i}>
+								{loc.Name}
+							</option>
 
-						</div>
-					}
-					{this.props.categorySorted && this.state.orderedCats}
-					{this.props.choseACatLoc &&  this.state.locationCategory}
-				
-				<div>
-					<button onClick={()=>this.addClick()}> Add location</button>
-					{this.props.toAdd &&
-						<div>
-							<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
-							<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
-							<input placeholder="latitude" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>
-							<input placeholder="longitude" type="text" value={this.props.locationCoordinates2} onChange={(e)=>this.props.changeLocationCoordinates2(e.target.value)}/>
-							<select name="locCats" onChange={(e)=>this.props.changeLocationCategory(e.target.value)}>
-								<option selected='selected'>category</option>
-								<MapCats {...this.props}/>
-							</select>
-						</div>
-					}
-				</div>
-				{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
-				<div>remove location
-					<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
-					<option value="selected" selected="selected">remove</option>
-					{this.props.locations.map((loc,i)=>
-						<option value={loc.Name} key={i}>
-							{loc.Name}
-						</option>
+							
+							)}
+						</select>
+					</div>
+					<div>
+						<button ref={ref => {this.sort = ref }} onClick={()=>this.handleAlphebatizeClick()}>sort alphabetically</button>
+					</div>
+					<div>
+						<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
+					</div>
+					<div> view locations of specific category
+						<select name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
+							<option selected="selected">category</option>
+							<MapCats {...this.props} />
+						</select>
+						<button onClick={()=>this.handleButton()}>undo</button>
 
-						
-						)}
-					</select>
+					</div>
+					<div>
+					{this.props.showingMap && <GoogleMapsContainer/> }
+					</div>
 				</div>
-				<div>
-					<button ref={ref => {this.sort = ref }} onClick={()=>this.handleAlphebatizeClick()}>sort alphabetically</button>
-				</div>
-				<div>
-					<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
-				</div>
-				<div> view locations of specific category
-					<select name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
-						<option selected="selected">category</option>
-						<MapCats {...this.props} />
-					</select>
-					<button onClick={()=>this.handleButton()}>undo</button>
-
-				</div>
-				<div>
-				{this.props.showingMap && <GoogleMapsContainer/> }
-				</div>
-			</div>
+		    </div>
 		    	)
 			}
 }

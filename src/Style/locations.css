@@ -10,4 +10,21 @@
 }
 .allLocationInfo{
 	display:flex;
+	justify-content: space-between;
+}
+.plus-circle{
+	background-color: whitesmoke;
+	border-radius: 50%;
+	cursor:pointer;
+
+}
+.plus-circle:hover{
+	background-color: #cbcdce;
+
+}
+.allOtherFeatures{
+	display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 10px;    
 }
