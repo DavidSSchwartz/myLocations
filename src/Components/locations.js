@@ -211,7 +211,7 @@ class Locations extends Component{
 					
 						)}
 					</div>
-					<div className="allOtherFeautures">
+					<div className="allOtherFeatures">
 						{this.state.nameClicked && 
 							<div> 
 								{this.state.locName} 
@@ -235,12 +235,13 @@ class Locations extends Component{
 						{this.props.choseACatLoc &&  this.state.locationCategory}
 					
 					<div>
-						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}>   </i>
+						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i>
 						{this.props.toAdd &&
 							<AddCat {...this.props} />
 						}
+						{this.props.alertAddIncomplete && <div className="warning">Please complete all fields </div>}
 					</div>
-					{this.props.alertAddIncomplete && <div>Please complete all fields </div>}
+					
 					<div>
 						<select name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
 						<option value="selected" selected="selected">Remove location</option>

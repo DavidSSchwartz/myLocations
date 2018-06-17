@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { MapCats } from './mapCats';
-
+import '../../Style/addCat.css';
 
 
 export class AddCat extends Component{
 	
 	render(){
 		return(
-			<div>
+			<div className="addCatDiv">
 				<input placeholder="name" type="text" value={this.props.locationName} onChange={(e)=>this.props.changeLocationName(e.target.value)}/>
 				<input placeholder="address" type="text" value={this.props.locationAddress} onChange={(e)=>this.props.changeLocationAddress(e.target.value)}/>
 				<input placeholder="latitude" type="text" value={this.props.locationCoordinates} onChange={(e)=>this.props.changeLocationCoordinates(e.target.value)}/>

@@ -31,6 +31,12 @@ class Header extends Component{
 			console.log(this.props.currentCats)
 			this.props.addIncomplete(false)
 			this.props.adding(false)
+			//reset the add inputs
+			this.props.changeLocationName('')
+			this.props.changeLocationAddress('')
+			this.props.changeLocationCoordinates('')
+			this.props.changeLocationCoordinates2('')
+			this.props.changeLocationCategory('')
 
 		}
 		else{
