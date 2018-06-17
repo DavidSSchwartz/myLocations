@@ -41,16 +41,33 @@
    position:absolute;
     font-size: .7em;
     padding: 3px;
-    right:0;
+     margin-left: -50px;
     box-shadow: 1px 1px 10px black;
     border-radius: 5%;
     -webkit-transition: opacity 1s;
     -o-transition: opacity 1s;
     background-color: #f1f1f1;
   
-
     /* Fade in tooltip */
     opacity: 0;
     transition: opacity 1s;
     white-space: normal;
+ }
+ .fullAddDiv{
+ 	padding:10px;
+ }
+ .sortABCbtn{
+ 	background-color: #fdd247;
+    border-radius: 18px;
+    min-width: 48px;
+    min-height: 48px;
+ }
+ .sortABCbtn:hover .tooltip{
+ 	opacity: 1;
+ }
+ .fa-sort-alpha-down{
+ 	font-size: 1.6em;
+ }
+ .tt2{
+ 	 margin-top: 20px;
  }

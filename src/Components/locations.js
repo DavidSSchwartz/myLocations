@@ -88,7 +88,7 @@ class Locations extends Component{
 
 		}
 		{this.sort.innerHTML=="unsort" ? this.sort.innerHTML= "sort alphabetically" : this.sort.innerHTML= "unsort"}
-
+		{this.sort.innerHTML=="unsort" ? this.sortbtn.style.backgroundColor= "#e0b024" : this.sortbtn.style.backgroundColor= "#fdd247"}
 
 	}
 
@@ -135,6 +135,7 @@ class Locations extends Component{
 
 
 		{this.catSort.innerHTML=="unsort" ? this.catSort.innerHTML= "sort by category" : this.catSort.innerHTML= "unsort"}
+
 	
 	}
 	handleChooseCatLoc=(e)=>{
@@ -234,12 +235,16 @@ class Locations extends Component{
 						{this.props.categorySorted && this.state.orderedCats}
 						{this.props.choseACatLoc &&  this.state.locationCategory}
 					
-					<div>
+					<div className="fullAddDiv">
 						<i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i>
 						{this.props.toAdd &&
+
 							<AddCat {...this.props} />
+						
 						}
-						{this.props.alertAddIncomplete && <div className="warning">Please complete all fields </div>}
+						{this.props.alertAddIncomplete &&
+						 <div className="warning">Please complete all fields </div>
+						}
 					</div>
 					
 					<div>
@@ -250,12 +255,13 @@ class Locations extends Component{
 								{loc.Name}
 							</option>
 
+
 							
 							)}
 						</select>
 					</div>
 					<div>
-						<button ref={ref => {this.sort = ref }} onClick={()=>this.handleAlphebatizeClick()}>sort alphabetically</button>
+						<button className="sortABCbtn" ref={ref => {this.sortbtn = ref }} onClick={()=>this.handleAlphebatizeClick()}><i className="fas fa-sort-alpha-down"></i><span ref={ref => {this.sort = ref }} className="tooltip tt2">sort alphabetically</span></button>
 					</div>
 					<div>
 						<button ref={ref => {this.catSort = ref }} onClick={()=>this.handleCategorySort()}>sort by category</button>
