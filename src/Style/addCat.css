@@ -1,3 +1,4 @@
 .addCatDiv{
 	display:flex;
+	flex-wrap: wrap
 }

@@ -1,73 +1,3 @@
-// // import React, {Component} from 'react';
-// // import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-
-// // export class MyMapComponent extends Component{  
-
-// // render(){
-// //   console.log(this.props.latitude, this.props.longitude)
-// //  return(
-// //   <div>
-// //           {withScriptjs(withGoogleMap((props) =>
-// //           <GoogleMap
-// //             defaultZoom={8}
-// //             defaultCenter={{ lat: 31.498946, lng: 34.870606 }}
-// //           >
-// //             {props.isMarkerShown && <Marker position={{ lat: this.props.latitude, lng: this.props.longitude}} />}
-// //           </GoogleMap>
-// //           ))}
-// //       </div>
-// //     )
-// //   }
-// // }
-
-// // // class TheMarker extends Component{
-// // //   render(){
-// // //     console.log(this.props)
-// // //     return(
-
-// // //          <Marker position={{ lat: this.props.latitude, lng: this.props.longitude}} />
-// // //       )
-// // //   }
-// // // }
-// import React, { Component } from 'react';
-// import GoogleMapReact from 'google-map-react';
-
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-// class SimpleMap extends Component {
-//   static defaultProps = {
-//     center: {
-//       lat: 59.95,
-//       lng: 30.33
-//     },
-//     zoom: 11
-//   };
-
-//   render() {
-//     return (
-//       // Important! Always set the container height explicitly
-//       <div style={{ height: '100vh', width: '100%' }}>
-//         <GoogleMapReact
-//           bootstrapURLKeys={{ key: "AIzaSyD4rfjUlbkGQl0UBaCnGTuGJN22Ig50DS8"}}
-//           defaultCenter={this.props.center}
-//           defaultZoom={this.props.zoom}
-//         >
-//           <AnyReactComponent
-//             lat={59.955413}
-//             lng={30.337844}
-//             text={'Kreyser Avrora'}
-//           />
-//         </GoogleMapReact>
-//       </div>
-//     );
-//   }
-// }
-
-// export default SimpleMap;
-
-// const APIkey= "AIzaSyD4rfjUlbkGQl0UBaCnGTuGJN22Ig50DS8"
-
-
 
 import React from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
@@ -101,12 +31,11 @@ class GoogleMapsContainer extends React.Component {
   }
   render() {
     const style = {
-      width: '50vw',
+      width: '70vw',
       height: '75vh',
       'marginLeft': 'auto',
       'marginRight': 'auto'
     }
-    console.log(this.props.longitude)
     return (
       <Map
         item
@@ -115,7 +44,7 @@ class GoogleMapsContainer extends React.Component {
         google = { this.props.google }
         onClick = { this.onMapClick }
         zoom = { 8 }
-        initialCenter = {{ lat: 31.498946, lng: 34.870606 }}
+        initialCenter = {{ lat: this.props.latitude || 31.498946, lng: this.props.longitude || 34.870606 }}
       >
         <Marker
           onClick = { this.onMarkerClick }

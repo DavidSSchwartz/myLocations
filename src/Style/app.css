@@ -4,7 +4,7 @@
 	
 }
 .footer{
-    height: 12%;
+    height: 78px;
     display: flex;
     width: 100%;
     justify-content: space-evenly;
@@ -34,6 +34,7 @@
 	background-color: #c09f36;
 }
 .content{
+	height:500px;
 }
 body{
 	padding:0;
@@ -45,4 +46,46 @@ body{
       #067faa, #4aa4c0
     );
 	
+}
+@media only screen and (max-width: 768px) {
+   .content {
+    height: 859px;
+    overflow-y: scroll;
+	}
+   .title {
+    
+    font-size: 1.5em;
+    }
+    .topBtn{
+    	padding:0;
+    	font-size: .7em;
+    	min-width:48px;
+    	min-height:48px;
+    }
+    .footer {
+    height: 60px;
+	}
+    .bottomIcon{
+    	font-size: 1.5em;
+
+    }
+    .allLocationInfo{
+    	flex-direction: column-reverse;
+    	height: auto;
+    }
+    .allOtherFeatures{
+    	flex-direction: row;
+    	flex-wrap: wrap;
+    }
+    .fullPropertyDiv {
+    padding: 5px;
+	}
+	.categoriesMainDiv{
+		flex-direction: column-reverse;
+	}
+	.addAndRemove {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 }

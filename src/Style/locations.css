@@ -1,5 +1,5 @@
 .locationsList{
-
+	overflow-y: scroll;
 }
 .locationInfo{
 	display:flex ;
@@ -10,11 +10,11 @@
 	cursor:pointer;
 	padding:10px;
 }
-.locationDetail{
-}
+
 .allLocationInfo{
 	display:flex;
 	justify-content: space-between;
+	height:100%;
 }
 .plus-circle, .fa-minus-circle, .fa-check-circle{
 	background-color: whitesmoke;
@@ -73,6 +73,7 @@
     border-radius: 18px;
     min-width: 48px;
     min-height: 48px;
+    cursor:pointer;
  }
  .sortBtn:hover .tooltip{
  	opacity: 1;
@@ -103,4 +104,7 @@
 }
 .removeLoca, .choseCat{
 	font-size:1.4em;
+}
+.choseCat{
+	border-radius:7px;
 }

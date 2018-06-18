@@ -7,7 +7,6 @@ class Header extends Component{
 		super()
 	}
 	componentWillMount(){
-		console.log('mounted')
 		this.props.saveCats(cats)
 
 	}
@@ -17,7 +16,11 @@ class Header extends Component{
 			let catAdded= this.props.currentCats.concat(this.props.categoryValue)
 			
 			this.props.saveCats(catAdded)
-			console.log(this.props.currentCats)
+			//hide adding inputs
+			this.props.adding(false)
+			//unhide adding button
+			this.props.addingBtn(true)
+			
 
 			
 		}
@@ -28,12 +31,12 @@ class Header extends Component{
 			
 			this.props.saveLocations(locAdded)
 			//this.props.saveNewLocation(newLocation)
-			console.log(this.props.currentCats)
 			this.props.addIncomplete(false)
 			//hide adding inputs
 			this.props.adding(false)
 			//unhide adding button
 			this.props.addingBtn(true)
+
 			//reset the add inputs
 			this.props.changeLocationName('')
 			this.props.changeLocationAddress('')
@@ -69,20 +72,7 @@ class Header extends Component{
 			
 	}
 	handleEditClick=()=>{
-		// let current = this.props.currentCats.indexOf(this.props.editCatValue)
-		// if(current > -1){
-		// 		this.props.currentCats.splice(current,1, this.props.newEditValue)
-
-		// 		let editedArray=this.props.currentCats
-		// 		this.props.saveCats(editedArray)
- 	// 	let current = this.props.currentCats.indexOf(this.props.editCatValue)
-		// let handleEdit= this.props.editCatValue
-		// let editedArray = this.props.currentCats.filter(cat => cat !== handleEdit)
-		// editedArray.splice(current,0,this.props.newEditValue)
-
-		// {this.props.newEditValue ? this.props.saveCats(editedArray) : ''}
 		
-		// this.props.editClicked(this.props.newEditValue)
 			
 		if(this.props.topic === 'categories'){
 			let currentCat = this.props.currentCats.indexOf(this.props.oldValueCats)
@@ -96,7 +86,6 @@ class Header extends Component{
 
 
 		let currentLoc = this.props.locations.indexOf(this.props.oldLocationValue)
-		console.log(this.props.oldLocationValue)
 			if(currentLoc > -1){
 			this.props.locations.splice(currentLoc,1, {Name:this.props.newLocationName,Address:this.props.newLocationAddress, Coordinates:{lat:this.props.newLocationCoordinates, long:this.props.newLocationCoordinates2}, Category:this.props.newLocationCategory})
 

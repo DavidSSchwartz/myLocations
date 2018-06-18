@@ -76,14 +76,14 @@
 
 
 
-const location1= {"Name":"Petach Tikva", "Address":"20-26 Tzahal St","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"Housing"}
+const location1= {"Name":"Petach Tikva", "Address":"20 Tzahal St","Coordinates": {"lat":32.088633 , "long":34.870859}, "Category":"Housing"}
 const location2= {"Name":"Jerusalem", "Address":"2 HaGra St", "Coordinates":{"lat":31.778212 , "long": 35.212296}, "Category":"Food"}
-const location3= {"Name":"Haifi", "Address":"8-10 Tsahal St","Coordinates": {"lat":32.823394 , "long":34.982197}, "Category":"Industrial"}
-const location4= {"Name":"Modiin" ,"Address": "2-6 Ovadya Hanavi St","Coordinates": {"lat":31.911837 , "long":35.004294 }, "Category":"Famous Site"}
-const location5= {"Name":"Netanya",  "Address":"3-1 HaKadar St","Coordinates": {"lat":32.323506 , "long":34.872956}, "Category":"View"}
-const location6= {"Name":"Tzfat",  "Address":"44-30 HaAri St","Coordinates":{"lat":32.970685 , "long":35.492610}, "Category":"Shopping"}
-const location7= {"Name":"Amirim",  "Address":"92-100 HaOranim St","Coordinates":{"lat":32.937959 , "long":35.453989}, "Category":"Famous Site"}
-const location8= {"Name":"Golan",  "Address":"980 HaKablan St","Coordinates":{"lat":32.088633 , "long":34.870859}, "Category":"View"}
+const location3= {"Name":"Haifa", "Address":"8 Tsahal St","Coordinates": {"lat":32.823394 , "long":34.982197}, "Category":"Industrial"}
+const location4= {"Name":"Modiin" ,"Address": "2 Ovadya Hanavi St","Coordinates": {"lat":31.911837 , "long":35.004294 }, "Category":"Famous Site"}
+const location5= {"Name":"Netanya",  "Address":"3 HaKadar St","Coordinates": {"lat":32.323506 , "long":34.872956}, "Category":"View"}
+const location6= {"Name":"Tzfat",  "Address":"44 HaAri St","Coordinates":{"lat":32.970685 , "long":35.492610}, "Category":"Shopping"}
+const location7= {"Name":"Amirim",  "Address":"92 HaOranim St","Coordinates":{"lat":32.937959 , "long":35.453989}, "Category":"Famous Site"}
+const location8= {"Name":"Kiryat Shemoneh",  "Address":"48 Hertzel St","Coordinates":{"lat":33.206537 , "long":35.567082}, "Category":"View"}
 localStorage.setItem('Location1',JSON.stringify(location1))
 localStorage.setItem('Location2',JSON.stringify(location2))
 localStorage.setItem('Location3',JSON.stringify(location3))
