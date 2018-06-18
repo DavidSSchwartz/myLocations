@@ -46,7 +46,11 @@ const defaultState={
 	Longitude:Number,
 	ShowingMap:'',
 	ToAdd:Boolean,
-	ToRemove:Boolean
+	ToRemove:Boolean,
+	Chose:Boolean,
+	AddBtn:Boolean,
+	RemoveBtn:Boolean,
+	ChooseBtn:Boolean
 };
 
 

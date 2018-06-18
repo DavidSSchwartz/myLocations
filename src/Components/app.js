@@ -39,7 +39,11 @@ function mapStateToProps(state){
 		longitude:state.Longitude,
 		showingMap:state.ShowingMap,
 		toAdd:state.ToAdd,
-		toRemove:state.ToRemove
+		toRemove:state.ToRemove,
+		chose:state.Chose,
+		addBtn:state.AddBtn,
+		removeBtn:state.RemoveBtn,
+		chooseBtn:state.ChooseBtn
 	
 
 	}

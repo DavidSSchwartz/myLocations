@@ -30,13 +30,17 @@ class Header extends Component{
 			//this.props.saveNewLocation(newLocation)
 			console.log(this.props.currentCats)
 			this.props.addIncomplete(false)
+			//hide adding inputs
 			this.props.adding(false)
+			//unhide adding button
+			this.props.addingBtn(true)
 			//reset the add inputs
 			this.props.changeLocationName('')
 			this.props.changeLocationAddress('')
 			this.props.changeLocationCoordinates('')
 			this.props.changeLocationCoordinates2('')
 			this.props.changeLocationCategory('')
+
 
 		}
 		else{
@@ -57,7 +61,10 @@ class Header extends Component{
 		let handleLocRemoval = this.props.removedLocation
 		let newLocArray = this.props.locations.filter(loc => loc.Name !== handleLocRemoval)
 		this.props.saveLocations(newLocArray)
+		//hide remove select bar
 		this.props.removing(false)
+		//unhide remove button
+		this.props.removingBtn(true)
 
 			
 	}

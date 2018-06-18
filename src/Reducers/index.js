@@ -35,7 +35,11 @@ import {
 	Longitude,
 	ShowingMap,
 	ToAdd,
-	ToRemove
+	ToRemove,
+	Chose,
+	AddBtn,
+	RemoveBtn,
+	ChooseBtn
 }
 from './location';
 
@@ -73,5 +77,9 @@ export const rootReducer = combineReducers({
 	ShowingMap,
 	ToAdd,
 	ToRemove,
+	Chose,
+	AddBtn,
+	RemoveBtn,
+	ChooseBtn,
 	routing: routerReducer
 });

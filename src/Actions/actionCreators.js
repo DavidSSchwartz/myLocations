@@ -197,4 +197,29 @@ export const removing=(Boolean)=>{
 		Boolean
 	}
 }
+export const choosing=(Boolean)=>{
+	return{
+		type:'CHOOSING',
+		Boolean
+	}
+}
+export const addingBtn=(Boolean)=>{
+	return{
+		type:'ADDING_BTN',
+		Boolean
+	}
+}
+export const removingBtn=(Boolean)=>{
+	return{
+		type:'REMOVING_BTN',
+		Boolean
+	}
+}
+export const choosingBtn=(Boolean)=>{
+	return{
+		type:'CHOOSING_BTN',
+		Boolean
+	}
+}
+
 

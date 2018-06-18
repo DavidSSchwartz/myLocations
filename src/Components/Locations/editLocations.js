@@ -39,7 +39,7 @@ export class EditLocations extends Component{
 					<input className="theEditBox" placeholder="address" type="text" value={this.props.newLocationAddress} onChange={(e)=>this.handleAddressChange(e, loc.loc)}/>
 					<input className="theEditBox" placeholder="latitue" type="text" value={this.props.newLocationCoordinates} onChange={(e)=>this.handleCoordinatesChange(e, loc.loc)}/>
 					<input className="theEditBox" placeholder="longitude" type="text" value={this.props.newLocationCoordinates2} onChange={(e)=>this.handleCoordinatesChange2(e, loc.loc)}/>
-					<select name="locCats" onChange={(e)=>this.handleCategoryChange(e, loc.loc)}>
+					<select className="theEditBox" name="locCats" onChange={(e)=>this.handleCategoryChange(e, loc.loc)}>
 						<option selected='selected'>{loc.loc.Category}</option>
 						<MapCats {...this.props} />
 					</select> 

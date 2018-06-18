@@ -2,7 +2,7 @@
 
 }
 .locationInfo{
-	display:flex;
+	display:flex ;
 	    width: min-content;
 	    padding: 10px;
 }
@@ -16,7 +16,7 @@
 	display:flex;
 	justify-content: space-between;
 }
-.plus-circle{
+.plus-circle, .fa-minus-circle, .fa-check-circle{
 	background-color: whitesmoke;
 	border-radius: 50%;
 	cursor:pointer;
@@ -29,6 +29,14 @@
 .plus-circle:hover .tooltip{
 	opacity:1;
 }
+
+.fa-minus-circle:hover{
+	background-color: #cbcdce;
+}
+.fa-check-circle:hover{
+	background-color: #cbcdce;
+}
+
 .allOtherFeatures{
 	display: flex;
     flex-direction: column;
@@ -69,7 +77,7 @@
  .sortBtn:hover .tooltip{
  	opacity: 1;
  }
- .fa-sort-alpha-down, .fa-clipboard-list, .plus-circle{
+ .fa-sort-alpha-down, .fa-sort-amount-down, .plus-circle, .fa-minus-circle, .fa-check-circle{
  	font-size: 1.7em;
  }
  .tt2{

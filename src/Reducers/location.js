@@ -274,3 +274,53 @@ export const ToRemove =(state='', action)=>{
 	}
 	return state
 }
+export const Chose =(state='', action)=>{
+
+	switch(action.type){
+		case 'CHOOSING':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+
+export const AddBtn =(state='', action)=>{
+
+	switch(action.type){
+		case 'ADDING_BTN':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+export const RemoveBtn =(state='', action)=>{
+
+	switch(action.type){
+		case 'REMOVING_BTN':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+export const ChooseBtn =(state='', action)=>{
+
+	switch(action.type){
+		case 'CHOOSING_BTN':
+
+			return action.Boolean
+
+		default:
+			return state;
+	}
+	return state
+}
+

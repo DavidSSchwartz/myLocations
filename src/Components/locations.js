@@ -15,7 +15,7 @@ class Locations extends Component{
 		this.state={
 			edit:false,
 			state:'',
-			locDisplay:'block',
+			locDisplay:'flex',
 			locationCategory:'',
 			nameClicked:false,
 			locName:'',
@@ -24,6 +24,7 @@ class Locations extends Component{
 			locCat:'',
 			locDisplay2:'block'
 		}
+
 	}
 	componentWillMount(){
 		console.log(Locs)
@@ -34,6 +35,8 @@ class Locations extends Component{
 		this.props.viewProperties('none')
 		this.props.adding(false)
 		this.props.removing(false)
+		this.props.choosing(false)
+
 	}
 	componentWillReceiveProps(nextProps){
 
@@ -109,26 +112,24 @@ class Locations extends Component{
 												)).sort())
 			//maybe try to incoorporate edit
 
+			
 			this.setState({
-				orderedCats:orderedCats
-			})
-			this.setState({
-				locationCategory:''
+				orderedCats:orderedCats,
+				locationCategory:'',
+				locDisplay:'none'
 			})
 
 			this.props.categorySorting(true)
 			//this.props.saveLocations(this.state.orderedCats)
-			this.setState({
-				locDisplay:'none'
-			})
 			
-				console.log(this.state.orderedCats)
+			
+			console.log(this.state.orderedCats)
 }	
 
 		else{
 			this.props.categorySorting(false)
 			this.setState({
-				locDisplay:'block'
+				locDisplay:'flex'
 			})
 			
 
@@ -148,25 +149,31 @@ class Locations extends Component{
 												{loci.Name}
 												</div>:null
 					))
+		this.props.categorySorting(false)
+		
 		this.setState({
-			orderedCats:''
-		})
-		this.setState({
-				locationCategory:locByCat
-			})
-		this.setState({
+				locationCategory:locByCat,
 				locDisplay:'none'
 			})
+		
 	
 		this.props.chooseACatLoc(true)
 		console.log(this.state.locationCategory)
 
 	}
 	handleButton=()=>{
+			//hide this section
 			this.props.chooseACatLoc(false)
+			//incase cat Sorting was clicked, undo it to make sure return to ONLY main list
+			this.props.categorySorting(false)
+
 			this.setState({
-				locDisplay:'block'
+				locDisplay:'flex'
 			})
+			//hide choosing select
+			this.props.choosing(false)
+			//choosing icon reappear
+			this.props.choosingBtn(true)
 		}
 	handleNameClick=(locN, locA, locCo, locCa)=>{
 			this.setState({
@@ -184,19 +191,27 @@ class Locations extends Component{
 	handleBackClick=()=>{
 		this.setState({
 				nameClicked:false,
-				locDisplay:'block'
+				locDisplay:'flex'
 			})
 	}
 	addClick=()=>{
 		
 		this.props.adding(true)
+		this.props.addingBtn(false)
 
 	}
 	removeClick=()=>{
 		this.props.removing(true)
+		this.props.removingBtn(false)
 	}
+	chooseClick=()=>{
+		this.props.choosing(true)
+		this.props.choosingBtn(false)
+	}
+	
 	render(){
 		console.log(this.state.orderedCats)
+		//{this.state.locDisplay == 'block' ? this.setState({})}
 		return(
 			<div  className="allLocationInfo">
 					<div className="locationsList">
@@ -250,7 +265,7 @@ class Locations extends Component{
 					<div className="allOtherFeatures">
 						
 					<div className="fullPropertyDiv">
-						<button className="sortBtn"><i className="fas fa-plus-circle plus-circle" onClick={()=>this.addClick()}> <span className='tooltip'>add category</span>  </i></button>
+						{this.props.addBtn ? <button className="sortBtn" onClick={()=>this.addClick()}><i className="fas fa-plus-circle plus-circle"></i><span className='tooltip tt2'>add category</span></button>:null}
 						{this.props.toAdd &&
 
 							<AddCat {...this.props} />
@@ -263,7 +278,7 @@ class Locations extends Component{
 					
 					<div className="fullPropertyDiv">
 						
-						<button className="sortBtn"><i className="fas fa-minus-circle" onClick={()=>this.removeClick()}><span className='tooltip'>remove category</span> </i> </button>
+						{this.props.removeBtn ? <button className="sortBtn" onClick={()=>this.removeClick()}><i className="fas fa-minus-circle"></i> <span className='tooltip tt2'>remove category</span> </button>:null}
 							
 						{this.props.toRemove ?
 							<select className="removeLoca" name='removeLocation' onChange={(e)=>this.props.removeLoc(e.target.value)}>
@@ -283,17 +298,21 @@ class Locations extends Component{
 						<button className="sortBtn" ref={ref => {this.sortbtn = ref }} onClick={()=>this.handleAlphebatizeClick()}><i className="fas fa-sort-alpha-down"></i><span ref={ref => {this.sort = ref }} className="tooltip tt2">sort alphabetically</span></button>
 					</div>
 					<div className="fullPropertyDiv">
-						<button className="sortBtn"ref={ref => {this.catSortBtn = ref }} onClick={()=>this.handleCategorySort()}><i className="fas fa-clipboard-list"></i><span ref={ref => {this.catSort = ref }} className="tooltip tt2">sort by category</span></button>
+						<button className="sortBtn"ref={ref => {this.catSortBtn = ref }} onClick={()=>this.handleCategorySort()}><i class="fas fa-sort-amount-down"></i><span ref={ref => {this.catSort = ref }} className="tooltip tt2">sort by category</span></button>
 					</div>
 					<div className="fullPropertyDiv"> 
 						<div className="chooseCat">
-							<select  className="choseCat" name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
-							
-							<option selected="selected">Choose category</option>
-							<MapCats {...this.props} />
-							</select>
-							<span className='tooltip tt2 tt3'>View locations of a specific category</span>
-							<button className="choseCat" onClick={()=>this.handleButton()}>undo</button>
+
+							{this.props.chooseBtn ? <button className="sortBtn" onClick={()=>this.chooseClick()}><i class="fas fa-check-circle"></i><span className='tooltip tt2 tt3'>View locations of a specific category</span> </button>:null}
+							{this.props.chose ?
+								<div>
+									<select  className="choseCat" name="chooseCat" onChange={(e)=> this.handleChooseCatLoc(e.target.value)}>
+										<option selected="selected">Choose category</option>
+										<MapCats {...this.props} />
+									</select>
+									<button className="choseCat" onClick={()=>this.handleButton()}>undo</button>
+								</div>:null
+							}
 						</div>
 						
 
